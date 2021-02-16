@@ -69,5 +69,5 @@ Scenario: Ver histórico de estoque de um produto
     When eu seleciono “informação sobre produtos” 
     And eu seleciono produto “produto 1”
     Then eu sou direcionado para a página “informações”
-    And eu seleciono “visualizar histórico de estoque do produto 1” 
+    And eu seleciono “visualizar histórico de estoque do produto 1” no último "mês"
     Then o sistema mostra o estoque do "produto 1" em cada dia do "mês"
