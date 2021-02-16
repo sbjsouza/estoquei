@@ -52,3 +52,4 @@ Scenario: Envio de relatório em formato indevido
     Then eu sou direcionado para a página “relatórios”
     And eu envio “relatorio_mensal_vendedor.pdf” 
     Then o sistema mostra a mensagem “relatório enviado no formato errado! Por favor, envie novamente em xlsx”
+    And redireciona "Samuel" para “Página de Gerenciamento de Vendas”
