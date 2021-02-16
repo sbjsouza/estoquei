@@ -52,3 +52,12 @@ Scenario: Envio de relatório em formato indevido
     Then eu sou direcionado para a página “relatórios”
     And eu envio “relatorio_mensal_vendedor.pdf” 
     Then o sistema mostra a mensagem “relatório enviado no formato errado! Por favor, envie novamente em xlsx”
+
+Scenario: Ver histórico de vendas de um produto
+    Given “Samuel” está definido na base de dados como “Vendedor”
+    And “Samuel” está na “Página de Gerenciamento de Vendas”
+    When eu seleciono “informação sobre produtos” 
+    And eu seleciono produto “produto 1”
+    Then eu sou direcionado para a página “informações”
+    And eu seleciono “visualizar histórico de vendas do produto 1” 
+    Then o sistema mostra todas as vendas realizadas do "produto 1", a data e o valor
