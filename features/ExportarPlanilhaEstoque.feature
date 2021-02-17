@@ -1,7 +1,6 @@
 Feature: Exportar Planilha de Estoque
     Como gestor, desejo exportar a planilha de estoque para o meu computador
 
-
 Scenario: Adicionar um produto ao estoque
     Given "Sergio" está definido na base de dados como "Administrador"
     And "Sergio" está na "Página de Gerenciamento de Estoque"
