@@ -50,7 +50,13 @@ Cenário: Aumentar a quantidade do produto no estoque
     Given o sistema possui "5" unidades do "produto 1"
     When eu envio para o sistema a adição de "5" unidades do "produto 1"
     Then o sistema registra em um banco de dados o aumento do estoque do "produto 1" em "5" unidades
-    And o o sistema retorna o estoque do "produto 1", que é de "10" unidades
+    And o sistema retorna o estoque do "produto 1", que é de "10" unidades
+
+Cenário: Diminuir a quantidade do produto no estoque
+    Given o sistema possui "5" unidades do "produto 1"
+    When eu envio para o sistema a remoção de "5" unidades do "produto 1"
+    Then o sistema registra em um banco de dados a redução do estoque do "produto 1" em "5" unidades
+    And o sistema retorna o estoque do "produto 1", que é de "0" unidades
 
 Scenario: Adicionar um produto sem ser administrador
     Given "Sergio" está definido na base de dados como "Colaborador"
