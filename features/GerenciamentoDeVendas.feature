@@ -5,8 +5,6 @@ Scenario: Registrar uma venda
     Given “Samuel” está definido na base de dados como “Vendedor”
     And “Samuel” está na “Página de Gerenciamento de Vendas”
     When eu seleciono “produto vendido” 
-    Then eu sou direcionado para a página “Registro de vendas”
-    And  eu vejo que o título da página é “Informe suas vendas”
     And eu informo que vendi o “produto 1” em quantidade “2” pelo valor de “R$45,90”, com forma de pagamento “parcelado” em parcelas de “12x”
     Then o sistema mostra uma mensagem de “Venda cadastrada no banco de dados”
 
@@ -40,8 +38,6 @@ Scenario: Registrar uma venda à vista com valor de parcelas
     Given “Samuel” está definido na base de dados como “Vendedor”
     And “Samuel” está na “Página de Gerenciamento de Vendas”
     When eu seleciono “produto vendido” 
-    Then eu sou direcionado para a página “Registro de vendas”
-    And  eu vejo que o título da página é “Informe suas vendas”
     And eu informo que vendi o “produto 1” em quantidade “2” pelo valor de “R$45,90”, com forma de pagamento “à vista” em parcelas de “12x”
     Then o sistema mostra uma mensagem de “Erro! Voce selecionou pagamento à vista e adicionou parcelas”
 
