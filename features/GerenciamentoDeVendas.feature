@@ -26,7 +26,7 @@ Scenario: Verificar informações do produto
     And eu seleciono produto “produto 1”
     Then eu sou direcionado para a página “informações”
     And eu seleciono “visualizar informações do produto 1” 
-    Then o sistema mostra a descrição “TV 45 Polegadas LG” e avaliação “4,5/5” do produto “produto 1” 
+    Then o sistema retorna os campos "descrição" com o valor “TV 45 Polegadas LG” e "avaliação" com o valor “4,5/5”, associado ao “produto 1” 
 
 Scenario: Enviar relatório de vendas mensal
     Given “Samuel” está definido na base de dados como “Vendedor”
