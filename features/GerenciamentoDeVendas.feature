@@ -59,7 +59,7 @@ Scenario: Ver histórico de vendas de um produto da loja
     And eu seleciono “visualizar histórico de vendas do produto 1” 
     Then o sistema mostra todas as vendas realizadas do "produto 1", a data e o valor
 
-Scenario: Ver histórico de estoque de um produto
+Scenario: Ver histórico de estoque de um produto da loja
     Given “Samuel” está definido na base de dados como “Vendedor”
     And “Samuel” está na “Página de Gerenciamento de Vendas”
     When eu seleciono “informação sobre produtos” 
