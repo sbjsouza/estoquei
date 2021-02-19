@@ -5,7 +5,7 @@ Scenario: Registrar uma venda
     Given “Samuel” está definido na base de dados como “Vendedor”
     And “Samuel” está na “Página de Gerenciamento de Vendas”
     When eu seleciono “produto vendido” 
-    And eu informo que vendi o “produto 1” em quantidade “2” pelo valor de “R$45,90”, com forma de pagamento “parcelado” em parcelas de “12x”
+    And eu informo que vendi o “produto 1” em quantidade “2” pelo valor de “R$45,90”, com forma de pagamento “parcelado” em parcelas de “12x” no dia "2021-02-25"
     Then o sistema mostra uma mensagem de “Venda cadastrada no banco de dados”
 
 Scenario: Ver a quantidade de um produto no estoque
@@ -59,7 +59,7 @@ Scenario: Ver histórico de vendas de um produto da loja
     And eu seleciono “visualizar histórico de vendas do produto 1” 
     Then o sistema mostra todas as vendas realizadas do "produto 1", a data e o valor
 
-Scenario: Ver histórico de estoque de um produto
+Scenario: Ver histórico de estoque de um produto da loja
     Given “Samuel” está definido na base de dados como “Vendedor”
     And “Samuel” está na “Página de Gerenciamento de Vendas”
     When eu seleciono “informação sobre produtos” 
