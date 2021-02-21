@@ -4,7 +4,7 @@ Feature: Estoque de produtos
 
 Scenario: Adicionar um produto ao estoque
     Given "Sergio" está definido na base de dados como "Administrador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na página "Gerenciamento de Estoque"
     When eu clico em "Adicionar novo produto"
     Then sou redirecionado para a "adição de produtos"
     And eu preencho os campos "Nome", "Descrição", "Foto", "SKU", "Preço" e "quantidade"
@@ -13,7 +13,7 @@ Scenario: Adicionar um produto ao estoque
 
 Scenario: Editar um produto existente no estoque
     Given "Sergio" está definido na base de dados como "Administrador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na página "Gerenciamento de Estoque"
     When eu seleciono "produto 1" 
     Then eu sou direcionado para a página "Informações do produto 1"
     And eu seleciono "Editar produto"
@@ -23,7 +23,7 @@ Scenario: Editar um produto existente no estoque
 
 Scenario: Remover um produto existente no estoque
     Given "Sergio" está definido na base de dados como "Administrador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na Página "Gerenciamento de Estoque"
     When eu seleciono "produto 1" 
     Then eu sou direcionado para a página "Informações do produto 1"
     And eu seleciono "Excluir produto"
@@ -33,7 +33,7 @@ Scenario: Remover um produto existente no estoque
 
 Scenario: Visualizar a descrição de um produto
     Given "Sergio" está definido na base de dados como "Administrador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na Página "Gerenciamento de Estoque"
     Given o sistema possui "3 produtos" cadastrados
     When eu pergunto ao sistema sobre "descrição do produto 1"
     Then o sistema retorna "Esta é a descrição do produto 1..." 
@@ -41,14 +41,14 @@ Scenario: Visualizar a descrição de um produto
 
 Scenario: Adicionar um produto já existente
     Given "Sergio" está definido na base de dados como "Administrador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na página "Gerenciamento de Estoque"
     When eu clico em "Adicionar novo produto"
     And eu preencho o campo "nome do produto" com "produto 1"
     Then o sistema mostra a mensagem "Este produto já está cadastrado"
 
 Cenário: Aumentar a quantidade do produto no estoque
     Given "Sergio" está definido na base de dados como "Administrador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na página "Gerenciamento de Estoque"
     Given o sistema possui "5" unidades do "produto 1"
     When eu envio para o sistema a adição de "5" unidades do "produto 1"
     Then o sistema registra em um banco de dados o aumento do estoque do "produto 1" em "5" unidades
@@ -56,7 +56,7 @@ Cenário: Aumentar a quantidade do produto no estoque
 
 Cenário: Diminuir a quantidade do produto no estoque
     Given "Sergio" está definido na base de dados como "Administrador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na página "Gerenciamento de Estoque"
     Given o sistema possui "5" unidades do "produto 1"
     When eu envio para o sistema a remoção de "5" unidades do "produto 1"
     Then o sistema registra em um banco de dados a redução do estoque do "produto 1" em "5" unidades
@@ -64,13 +64,13 @@ Cenário: Diminuir a quantidade do produto no estoque
 
 Scenario: Adicionar um produto sem ser administrador
     Given "Sergio" está definido na base de dados como "Colaborador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na página "Gerenciamento de Estoque"
     When eu clico em "Adicionar novo produto"
     Then o sistema mostra a mensagem "Esta acção requer acesso de administrador"
 
 Scenario: Editar um produto existente no estoque sem ser administrador
     Given "Sergio" está definido na base de dados como "Colaborador"
-    And "Sergio" está na "Página de Gerenciamento de Estoque"
+    And "Sergio" está na página "Gerenciamento de Estoque"
     When eu seleciono "produto 1" 
     Then eu sou direcionado para a página "Informações do produto 1"
     And eu seleciono "Editar produto"
