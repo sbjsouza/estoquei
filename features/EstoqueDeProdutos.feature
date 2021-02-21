@@ -75,4 +75,3 @@ Scenario: Editar um produto existente no estoque sem ser administrador
     Then eu sou direcionado para a página "Informações do produto 1"
     And eu seleciono "Editar produto"
     Then o sistema mostra a mensagem "Esta ação requer acesso de administrador"
-    And o sistema pergunta "Deseja fazer login como administrador?"
