@@ -66,7 +66,7 @@ Scenario: Adicionar um produto sem ser administrador
     Given "Sergio" está definido na base de dados como "Colaborador"
     And "Sergio" está na página "Gerenciamento de Estoque"
     When eu clico em "Adicionar novo produto"
-    Then o sistema mostra a mensagem "Esta acção requer acesso de administrador"
+    Then o sistema mostra a mensagem "Esta ação requer acesso de administrador"
 
 Scenario: Editar um produto existente no estoque sem ser administrador
     Given "Sergio" está definido na base de dados como "Colaborador"
