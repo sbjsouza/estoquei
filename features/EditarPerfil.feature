@@ -1,5 +1,5 @@
 Feature: Editar Meu Perfil
-    Como vendedor, gostaria de editar no meu perfil, minhas informações de cadastro.
+    Como usuário, gostaria de editar no meu perfil, minhas informações de cadastro.
 
 Scenario: Navegação da tela de ‘Meu Perfil’ para ‘Editar Perfil‘
     Given “Marco” é um usuário do tipo “Vendedor”
@@ -13,3 +13,16 @@ Scenario: Navegação da tela de ‘Meu Perfil’ para ‘Editar Perfil‘
     And eu consigo visualizar o campo “foto de perfil” de “Marco” preenchido com “user_marco.png”
     And eu consigo visualizar o campo “Nome” de “Marco” preenchido com "Marco Santana"
     And eu consigo visualizar o campo “Email” de “Marco” preenchido com "marco@cin.com"
+    And eu consigo visualizar a opção "Salvar"
+
+Scenario: Edição de perfil com email já utilizado.
+    Given “Marco” é um usuário do tipo “Vendedor”
+    And “Marco” está registrado com o “Email”: “marco@cin.com”
+    And "Luiz" é um usuário do tipo "Vendedor"
+    And "Luiz" está registrado com o "Email": "tricolor@cin.com"
+    And “Marco” está na tela de "Editar Perfil".
+    Then eu consigo visualizar o campo “Email” de “Marco” preenchido com "marco@cin.com"
+    And eu consigo visualizar a opção "Salvar".
+    When eu altero o campo "Email" para "tricolor@cin.com"
+    And eu seleciono a opção "Salvar"
+    Then o sistema mostra o erro "Email já em uso"
