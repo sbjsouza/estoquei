@@ -56,5 +56,6 @@ Scenario: Edição perfil sem salvar não deve registrar no sistema a alteraçã
     Then eu consigo visualizar o campo “foto de perfil” de “Marco” preenchido com "user_marco.png"
     And eu consigo visualizar a opção "Salvar"
     When eu altero o campo "foto de perfil" para "o arquivo: 'livro.pdf'"
-    And eu volto para a tela de "Meu Pèrfil"
-    Then eu consigo visualizar o campo “foto de perfil” de “Marco” preenchido com "user_marco.png"
+    Then eu consigo visualizar o campo “foto de perfil” de “Marco” preenchido com "livro.pdf"
+    And eu volto para a tela de "Meu Perfil"
+    Then eu consigo visualizar a “foto de perfil” de “Marco”, “user_marco.png”
