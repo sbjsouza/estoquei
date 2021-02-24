@@ -47,3 +47,13 @@ Scenario: Edição de foto de perfil com arquivo sem ser imagem.
     When eu altero o campo "foto de perfil" para "o arquivo: 'livro.pdf'"
     And eu seleciono a opção "Salvar"
     Then o sistema mostra o erro "Somente fotos são aceitas para foto de perfil."
+
+Scenario: Edição perfil sem salvar não deve registrar no sistema a alteração.
+    Given “Marco” é um usuário do tipo “Vendedor”
+    And “Marco” está registrado com a “foto de perfil": “user_marco.png”
+    And “Marco” está na tela de "Editar Perfil"
+    Then eu consigo visualizar o campo “foto de perfil” de “Marco” preenchido com "user_marco.png"
+    And eu consigo visualizar a opção "Salvar"
+    When eu altero o campo "foto de perfil" para "o arquivo: 'livro.pdf'"
+    And eu volto para a tela de "Meu Pèrfil"
+    Then eu consigo visualizar o campo “foto de perfil” de “Marco” preenchido com "user_marco.png"
