@@ -5,14 +5,16 @@ Feature: Meu Perfil
 Scenario: Visualização e navegação do menu ‘Meu Perfil’
     Given “Marco” é um usuário do tipo “Vendedor”
     And “Marco” está registrado com a “foto de perfil” “user_marco.png”
+    And “Marco” está registrado com o “Email”: “marco@cin.com”
+    And “Marco” está registrado com o "Nome": “Marco Santana”
     And “Marco” está em qualquer página do sistema depois do login.
     Then eu consigo visualizar no menu a opção “Meu Perfil”
     When eu seleciono a opção “Meu Perfil”
     Then eu sou direcionado para a página “Meu Perfil”
     And eu consigo visualizar a “foto de perfil” de “Marco”, “user_marco.png”
     And eu consigo visualizar a opção “Editar Perfil”
-    And eu consigo visualizar o “Nome” de “Marco”
-    And eu consigo visualizar o “Email” de “Marco”
+    And eu consigo visualizar o “Nome” de “Marco”, "Marco Santana"
+    And eu consigo visualizar o “Email” de “Marco”, “marco@cin.com”
 
 Scenario: Visualização da minha lista de métricas na página ‘Meu Perfil’
     Given “Marco” é um usuário do tipo “Vendedor”
