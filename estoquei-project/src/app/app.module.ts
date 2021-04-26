@@ -11,7 +11,11 @@ import { VendedorComponent } from './vendedor/vendedor.component';
 import { AddProductComponentComponent } from './add-product-component/add-product-component.component';
 
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { AvatarModule } from 'primeng/avatar';
+
 import { ProductListComponent } from './product-list/product-list.component';
+import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +26,16 @@ import { ProductListComponent } from './product-list/product-list.component';
     VendedorComponent,
     AddProductComponentComponent,
     ProductListComponent,
+    TopSellersRankComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, InputTextModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    InputTextModule,
+    TableModule,
+    AvatarModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
