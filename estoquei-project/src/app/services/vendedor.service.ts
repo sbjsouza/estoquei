@@ -24,14 +24,14 @@ export class VendedorService {
   };
 
   // Obtem todos os produtos
-  getProducts(): Observable<Vendedor[]> {
+  getSellers(): Observable<Vendedor[]> {
     return this.httpClient
       .get<Vendedor[]>(this.url)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   // Obtem um produto pelo id
-  getProduct(id: number): Observable<Vendedor> {
+  getSeller(id: number): Observable<Vendedor> {
     return this.httpClient
       .get<Vendedor>(this.url + '/' + id)
       .pipe(retry(2), catchError(this.handleError));
