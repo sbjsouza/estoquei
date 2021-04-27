@@ -11,6 +11,7 @@ import { VendedorComponent } from './vendedor/vendedor.component';
 import { AddProductComponentComponent } from './add-product-component/add-product-component.component';
 
 import { InputTextModule } from 'primeng/inputtext';
+import {CalendarModule} from 'primeng/calendar';
 import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
@@ -23,7 +24,7 @@ import { ProductListComponent } from './product-list/product-list.component';
     AddProductComponentComponent,
     ProductListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, InputTextModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, InputTextModule, CalendarModule],
   providers: [],
   bootstrap: [AppComponent],
 })
