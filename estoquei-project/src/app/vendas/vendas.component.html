@@ -19,6 +19,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+
   h1,
   h2,
   h3,
@@ -332,47 +333,57 @@
   </nav>
 </div>
 
-<div class="content" role="main" style="width: 100%">
-  <!-- Vendas -->
-  <h2 style="text-align: left; width: 100%">Vendas</h2>
-  <p style="text-align: left; width: 100%">Cadastre uma venda</p>
 
-  <div class="card-container">
-    <a
-      class="card"
-    >
-      
   
-      <span><h4>Nome do Produto</h4>
-        <input type="text" pInputText/>
-        <h4>SKU do Produto</h4>
-        <input type="text" pInputText/>
-        <h4>Valor</h4>
-        <input type="text" pInputText/>
-        <h4>Quantidade</h4>
-        <input id="float-input" type="text" pInputText/>
-        <h4>ID Vendedor</h4>
-        <input type="text" pInputText/>
-        <div class="p-field p-col-12 p-md-4">
-          <label for="basic">Data</label>
-          <p-calendar inputId="basic"></p-calendar>
-      </div>
+    <!-- Vendas -->
+    <h2 style="text-align: left; width: 100%">Vendas</h2>
+    <p style="text-align: left; width: 100%">Cadastre uma venda</p>
+    
 
-        
-        <td><button>Adicionar</button></td></span>
   
+  <div style="width: 100%; display: table;">
+    <div style="display: table-row">
+          <div class="card-container">
+            <a class="card">
+              <span><h4>Nome do Produto</h4>
+                <input type="text" pInputText/>
+                <h4>SKU do Produto</h4>
+                <input type="text" pInputText/>
+                <h4>Valor</h4>
+                <input type="text" pInputText/>
+                <h4>Quantidade</h4>
+                <input id="float-input" type="text" pInputText/>
+                <h4>ID Vendedor</h4>
+                <input type="text" pInputText/>
+                <div class="p-field p-col-12 p-md-4">
+                  <label for="basic">Data</label>
+                  <p-calendar inputId="basic"></p-calendar>
+                </div>
       
-    </a>
+                
+                <td><button>Adicionar</button></td></span>
+          
+              
+            </a>
+            </div>
+        <div style="display: table-cell;"> <h2 style="text-align: left; width: 100%">Vendas</h2>
+          
+          <div layout="column">
+            <table>
+              <tr><td><h2>Lista de Vendas</h2></td></tr>
+              <tr *ngFor="let venda of vendas | async">
+                <td>Produto: {{venda.product}}</td>
+                <td>SKU: {{venda.sku}}</td>
+                <td>ID Vendedor: {{venda.id_vendedor}}</td>
+                <td>Quantidade: {{venda.quantity}}</td>
+                <td>Valor: {{venda.value}}</td>
+                <td>Data: {{venda.data}}</td>
+                
+              </tr>
+            </table>
+            
+          </div> </div>
   </div>
-
-  
-  <h1>Vendas</h1>
-    <div layout="column">
-      <li *ngFor="let venda of vendas | async">
-          {{venda.sku}}
-      </li>
-    </div>
-  
   
   
 
