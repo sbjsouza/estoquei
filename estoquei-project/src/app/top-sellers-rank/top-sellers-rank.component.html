@@ -1,9 +1,10 @@
-<p-table [value]="vendedores">
+<p-table [value]="sortedVendedores">
   <ng-template pTemplate="header">
     <tr>
       <th>Vendedor</th>
-      <th>Valor bruto de vendas (30 dias)</th>
-      <th>Número de produtos vendidos (30 dias)</th>
+      <th>Valor de vendas por produto</th>
+      <th>Valor bruto de vendas</th>
+      <th>Número de produtos vendidos</th>
       <th>Nota do vendedor</th>
     </tr>
   </ng-template>
@@ -20,6 +21,13 @@
             {{ vendedor.name }}
           </div>
         </div>
+      </td>
+      <td>
+        R${{
+          vendedor.monthly_sells != 0
+            ? vendedor.monthly_sales_price / vendedor.monthly_sells
+            : 0
+        }}
       </td>
       <td>R${{ vendedor.monthly_sales_price }}</td>
       <td>{{ vendedor.monthly_sells }} produtos vendidos</td>

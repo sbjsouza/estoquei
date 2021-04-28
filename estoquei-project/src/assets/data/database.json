@@ -36,7 +36,7 @@
       "name": "nome do vendedor",
       "picture_url": "https://i0.wp.com/papodafama.com.br/wp-content/uploads/2020/12/rafael-portugal-bbb-21.jpg?fit=1200%2C801&ssl=1",
       "id": 1,
-      "monthly_sells": 193,
+      "monthly_sells": 10,
       "monthly_sales_price": "32000.00",
       "seller_evaluation": "4.1"
     },
@@ -44,16 +44,16 @@
       "name": "Rafael Portugal",
       "picture_url": "https://i0.wp.com/papodafama.com.br/wp-content/uploads/2020/12/rafael-portugal-bbb-21.jpg?fit=1200%2C801&ssl=1",
       "id": 2,
-      "monthly_sells": 193,
-      "monthly_sales_price": "19000.00",
+      "monthly_sells": 1,
+      "monthly_sales_price": "32000.00",
       "seller_evaluation": "4.1"
     },
     {
       "name": "nome do vendedor",
       "picture_url": "https://i0.wp.com/papodafama.com.br/wp-content/uploads/2020/12/rafael-portugal-bbb-21.jpg?fit=1200%2C801&ssl=1",
       "id": 3,
-      "monthly_sells": 193,
-      "monthly_sales_price": "21000.00",
+      "monthly_sells": 20,
+      "monthly_sales_price": "70000.00",
       "seller_evaluation": "4.1"
     }
   ]

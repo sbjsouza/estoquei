@@ -13,6 +13,7 @@ export class TopSellersRankComponent implements OnInit {
 
   vendedor = {} as Vendedor;
   vendedores: Vendedor[];
+  sortedVendedores: Vendedor[];
 
   ngOnInit(): void {
     this.getSellers();
@@ -21,13 +22,25 @@ export class TopSellersRankComponent implements OnInit {
   getSellers() {
     this.vendedorService.getSellers().subscribe((vendedores: Vendedor[]) => {
       this.vendedores = vendedores;
-      console.log('Vendedor 2: ', vendedores);
+      this.sortedVendedores = this.getSortedSellers(this.vendedores);
     });
   }
   getSellersById(id: number) {
     this.vendedorService.getSeller(id).subscribe((vendedor: Vendedor) => {
       this.vendedor = vendedor;
-      console.log('Vendedor 3: ', vendedor);
     });
+  }
+  getSortedSellers(sellerList: Vendedor[]) {
+    const temp_sorted = sellerList.sort((a, b) =>
+      (a.monthly_sells != 0
+        ? parseInt(a.monthly_sales_price) / a.monthly_sells
+        : 0) <
+      (b.monthly_sells != 0
+        ? parseInt(b.monthly_sales_price) / b.monthly_sells
+        : 0)
+        ? 1
+        : -1
+    );
+    return temp_sorted;
   }
 }
