@@ -72,12 +72,12 @@
 
   .content {
     display: flex;
-    margin: 82px 40px;
-    padding: 0 16px;
-    max-width: 960px;
+    margin-top: 40px;
+    padding: 50px;
+    /* max-width: 960px; */
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   svg.material-icons {
@@ -334,18 +334,12 @@
 
 <div class="content" role="main" style="width: 100%">
   <!-- Vendas -->
-  <h2 style="text-align: left; width: 100%">Vendedor</h2>
-  <p style="text-align: left; width: 100%">Cadastre um vendedor</p>
+  <h2 id="pagename" style="text-align: left; width: 100%">Vendedor</h2>
+  <p style="text-align: left; width: 100%">Visualize os melhores vendedores</p>
 
-  <card></card>
-
-  <!-- Next Steps -->
-
-  <!-- Terminal -->
-
-  <!-- Links -->
-
-  <!-- Footer -->
+  <div style="margin-top: 50px; width: 100%">
+    <top-sellers-rank></top-sellers-rank>
+  </div>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

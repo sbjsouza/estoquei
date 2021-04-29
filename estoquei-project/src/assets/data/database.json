@@ -33,27 +33,27 @@
   ],
   "sellers": [
     {
-      "name": "nome do vendedor",
+      "name": "Rafael Portugal",
       "picture_url": "https://i0.wp.com/papodafama.com.br/wp-content/uploads/2020/12/rafael-portugal-bbb-21.jpg?fit=1200%2C801&ssl=1",
       "id": 1,
-      "monthly_sells": 193,
+      "monthly_sells": 1,
       "monthly_sales_price": "32000.00",
       "seller_evaluation": "4.1"
     },
     {
-      "name": "nome do vendedor",
-      "picture_url": "https://i0.wp.com/papodafama.com.br/wp-content/uploads/2020/12/rafael-portugal-bbb-21.jpg?fit=1200%2C801&ssl=1",
+      "name": "Gil do Vigor",
+      "picture_url": "https://portalpopline.com.br/wp-content/uploads/2021/02/Design-sem-nome-2021-02-04T231932.602.png",
       "id": 2,
-      "monthly_sells": 193,
-      "monthly_sales_price": "19000.00",
+      "monthly_sells": 2,
+      "monthly_sales_price": "70000.00",
       "seller_evaluation": "4.1"
     },
     {
-      "name": "nome do vendedor",
-      "picture_url": "https://i0.wp.com/papodafama.com.br/wp-content/uploads/2020/12/rafael-portugal-bbb-21.jpg?fit=1200%2C801&ssl=1",
+      "name": "Boninho",
+      "picture_url": "https://pbs.twimg.com/profile_images/951068576714231809/2_KA28BU.jpg",
       "id": 3,
-      "monthly_sells": 193,
-      "monthly_sales_price": "21000.00",
+      "monthly_sells": 1,
+      "monthly_sales_price": "10000.00",
       "seller_evaluation": "4.1"
     }
   ],
