@@ -5,9 +5,9 @@ Feature: Ordenar em uma lista os melhores vendedores de acordo com o score - val
 # Service
 Scenario: Obter score do vendedor
     Given o vendedor está registrado com o id "1", nome "Rafael Portugal", Número de vendas "1" e Valor bruto de vendas "32000.00"
-    When eu pergunto ao sistema pelo score do vendedor com id "1"
-    Then o sistema retorna "32000"
-    And o vendedor está registrado com o id "1", nome "Rafael Portugal", Número de vendas "1" e Valor bruto de vendas "32000.00"
+    When eu pergunto ao sistema pelo vendedor com id "1"
+    Then o sistema retorna o vendedor que está registrado com o id "1", nome "Rafael Portugal", Número de vendas "1" e Valor bruto de vendas "32000.00"
+    # And o vendedor está registrado com o id "1", nome "Rafael Portugal", Número de vendas "1" e Valor bruto de vendas "32000.00"
 
 # UI
 Scenario: Existem 3 vendedores ordenados pelo score, em ordem decrescente

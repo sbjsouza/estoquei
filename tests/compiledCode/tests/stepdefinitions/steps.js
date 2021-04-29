@@ -46,7 +46,6 @@ let pAND = (p, q) => p.then((a) => q.then((b) => a && b));
 //   var samecpfs = allalunos.filter((elem) => sameCPF(elem, cpf));
 //   await assertTamanhoEqual(samecpfs, n);
 // }
-let score = "";
 function getScore(vendedor) {
     return __awaiter(this, void 0, void 0, function* () {
         return vendedor.monthly_sells != 0
@@ -92,6 +91,15 @@ function checkSeller(id, name, monthly_sells, monthly_sales_price) {
         }
     });
 }
+function compareSeller(id, name, monthly_sells, monthly_sales_price, seller) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return Promise.resolve(seller.monthly_sells.toString() == monthly_sells.toString() &&
+            seller.monthly_sales_price.toString() == monthly_sales_price.toString()
+            ? expect(seller.name.toString()).to.equal(name)
+            : expect(false).to.equal(true));
+    });
+}
+var seller;
 cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
     Given(/^eu estou na página "([^\"]*)"$/, (pagename) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get("http://localhost:4200/");
@@ -107,12 +115,16 @@ cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
         yield protractor_1.browser.get(`http://localhost:4200/${pagename.toString().toLowerCase()}/`);
         yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
     }));
-    When(/^eu pergunto ao sistema pelo score do vendedor com id "(\d*)"$/, (id) => __awaiter(this, void 0, void 0, function* () {
-        let seller = yield getSellerId(id.toString());
-        score = (yield getScore(seller)).toString();
+    When(/^eu pergunto ao sistema pelo vendedor com id "(\d*)"$/, (id) => __awaiter(this, void 0, void 0, function* () {
+        seller = yield getSellerId(id.toString());
+        // score = (await getScore(seller)).toString();
     }));
-    Then(/^o sistema retorna "(\d*)"$/, (localscore) => __awaiter(this, void 0, void 0, function* () {
-        yield expect(score).to.equal(localscore.toString());
+    // Then(/^o sistema retorna o vendedor que está registrado com o id "1", nome "Rafael Portugal", Número de vendas "1" e Valor bruto de vendas "32000.00""(\d*)"$/, async (localscore) => {
+    //   await expect(score).to.equal(localscore.toString());
+    // });
+    Then(/^o sistema retorna o vendedor que está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, monthly_sells, monthly_sales_price) => __awaiter(this, void 0, void 0, function* () {
+        yield protractor_1.browser.get("http://localhost:4200/");
+        yield compareSeller(id.toString(), name.toString(), monthly_sells.toString(), monthly_sales_price.toString(), seller);
     }));
     Then(/^o sistema lista o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/, (seller1, seller2, seller3) => __awaiter(this, void 0, void 0, function* () {
         let tmp_list = [seller1, seller2, seller3];
