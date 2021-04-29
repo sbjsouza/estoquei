@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { AvatarModule } from 'primeng/avatar';
 
+import { CalendarModule } from 'primeng/calendar';
 import { ProductListComponent } from './product-list/product-list.component';
 import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.component';
 
