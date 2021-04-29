@@ -46,7 +46,6 @@ let pAND = (p, q) => p.then((a) => q.then((b) => a && b));
 //   var samecpfs = allalunos.filter((elem) => sameCPF(elem, cpf));
 //   await assertTamanhoEqual(samecpfs, n);
 // }
-let score = "";
 
 async function getScore(vendedor: Vendedor) {
   return vendedor.monthly_sells != 0
@@ -92,7 +91,21 @@ async function checkSeller(
     expect(false).to.equal(true);
   }
 }
-
+async function compareSeller(
+  id: String,
+  name: String,
+  monthly_sells: String,
+  monthly_sales_price: String,
+  seller: Vendedor
+) {
+  return Promise.resolve(
+    seller.monthly_sells.toString() == monthly_sells.toString() &&
+      seller.monthly_sales_price.toString() == monthly_sales_price.toString()
+      ? expect(seller.name.toString()).to.equal(name)
+      : expect(false).to.equal(true)
+  );
+}
+var seller: Vendedor;
 defineSupportCode(function ({ Given, When, Then }) {
   Given(/^eu estou na página "([^\"]*)"$/, async (pagename) => {
     await browser.get("http://localhost:4200/");
@@ -123,18 +136,27 @@ defineSupportCode(function ({ Given, When, Then }) {
     );
   });
 
-  When(
-    /^eu pergunto ao sistema pelo score do vendedor com id "(\d*)"$/,
-    async (id) => {
-      let seller = await getSellerId(id.toString());
-      score = (await getScore(seller)).toString();
-    }
-  );
-
-  Then(/^o sistema retorna "(\d*)"$/, async (localscore) => {
-    await expect(score).to.equal(localscore.toString());
+  When(/^eu pergunto ao sistema pelo vendedor com id "(\d*)"$/, async (id) => {
+    seller = await getSellerId(id.toString());
+    // score = (await getScore(seller)).toString();
   });
 
+  // Then(/^o sistema retorna o vendedor que está registrado com o id "1", nome "Rafael Portugal", Número de vendas "1" e Valor bruto de vendas "32000.00""(\d*)"$/, async (localscore) => {
+  //   await expect(score).to.equal(localscore.toString());
+  // });
+  Then(
+    /^o sistema retorna o vendedor que está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/,
+    async (id, name, monthly_sells, monthly_sales_price) => {
+      await browser.get("http://localhost:4200/");
+      await compareSeller(
+        id.toString(),
+        name.toString(),
+        monthly_sells.toString(),
+        monthly_sales_price.toString(),
+        seller
+      );
+    }
+  );
   Then(
     /^o sistema lista o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/,
     async (seller1, seller2, seller3) => {
