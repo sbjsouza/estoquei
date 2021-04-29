@@ -351,8 +351,7 @@
   <p style="text-align: left; width: 100%">Cadastre uma venda</p>
 
   <!-- Vendas -->
-  <h2 style="text-align: left; width: 100%">Vendas</h2>
-  <p style="text-align: left; width: 100%">Cadastre uma venda</p>
+  
 
   <div style="width: 100%; display: table">
     <div style="display: table-row">
@@ -368,7 +367,7 @@
             <input type="text" pInputText />
             <h4>Quantidade</h4>
             <input id="float-input" type="text" pInputText />
-            <h4>ID Vendedor</h4>
+            <h4>ID</h4>
             <input type="text" pInputText />
             <div class="p-field p-col-12 p-md-4">
               <label for="basic">Data</label>
@@ -387,7 +386,7 @@
             <tr>
               <th>Produto</th>
               <th>SKU</th>
-              <th>ID Vendedor</th>
+              <th>ID</th>
               <th>Quantidade</th>
               <th>Valor</th>
               <th>Data</th>
@@ -396,7 +395,7 @@
               <tr *ngFor="let venda of vendas | async">
                 <td>{{ venda.product }}</td>
                 <td>{{ venda.sku }}</td>
-                <td>{{ venda.id_vendedor }}</td>
+                <td>{{ venda.id }}</td>
                 <td>{{ venda.quantity }}</td>
                 <td>{{ venda.value }}</td>
                 <td>{{ venda.data }}</td>

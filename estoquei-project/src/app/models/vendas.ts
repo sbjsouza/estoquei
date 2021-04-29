@@ -1,8 +1,8 @@
 export class Vendas {
     product: string;
     sku: number;
-    id_vendedor: number;
-    valor: string;
+    id: number;
+    value: string;
     quantity: number;
     data: string;
   
@@ -13,9 +13,9 @@ export class Vendas {
     clean(): void {
       this.product = '';
       this.sku = 0;
-      this.id_vendedor = 0;
+      this.id = 0;
       this.quantity = 0;
-      this.valor = '';
+      this.value = '';
       this.data = '';
     }
   }

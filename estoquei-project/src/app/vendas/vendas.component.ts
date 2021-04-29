@@ -17,8 +17,10 @@ export class VendasComponent implements OnInit {
 
   ngOnInit(): void {
     this.vendas = this.vendasService.getSells()
+    
     //console.log(this.vendas)
   }
+
 
   ConvertToCSV(objArray: any): string {
       var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;

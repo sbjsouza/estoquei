@@ -61,7 +61,7 @@
     {
       "product": "tv",
       "sku": 1111111112,
-      "id_vendedor": 1,
+      "id": 1,
       "quantity": 2,
       "value": "39.90",
       "data": "2021-05-05"
@@ -69,7 +69,7 @@
     {
       "product": "computador",
       "sku": 1111111111,
-      "id_vendedor": 2,
+      "id": 2,
       "quantity": 2,
       "value": "39.90",
       "data": "2021-05-05"
@@ -77,7 +77,7 @@
     {
       "product": "celular",
       "sku": 1111111112,
-      "id_vendedor": 1,
+      "id": 3,
       "quantity": 2,
       "value": "39.90",
       "data": "2021-05-06"

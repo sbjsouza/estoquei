@@ -31,16 +31,16 @@ export class VendasService {
   }
 
   // Obtem a venda pelo nome do produto
-  getSellByName(name: string): Observable<Vendas> {
+  getSellByName(product: string): Observable<Vendas> {
     return this.httpClient
-      .get<Vendas>(this.url + '/' + name)
+      .get<Vendas>(this.url + '/' + product)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   // Obtem a venda pelo id do vendedor
-  getSellByID(id_vendedor: string): Observable<Vendas> {
+  getSellByID(id: number): Observable<Vendas> {
     return this.httpClient
-      .get<Vendas>(this.url + '/' + id_vendedor)
+      .get<Vendas>(this.url + '/' + id)
       .pipe(retry(2), catchError(this.handleError));
   }
 
