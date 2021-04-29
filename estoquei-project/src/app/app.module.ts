@@ -36,6 +36,7 @@ import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.com
     InputTextModule,
     TableModule,
     AvatarModule,
+    CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
