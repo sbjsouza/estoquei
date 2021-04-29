@@ -36,7 +36,11 @@ export class VendedorService {
       .get<Vendedor>(this.url + '/' + id)
       .pipe(retry(2), catchError(this.handleError));
   }
-
+  getScore(vendedor: Vendedor): Number {
+    return vendedor.monthly_sells != 0
+      ? parseInt(vendedor.monthly_sales_price) / vendedor.monthly_sells
+      : 0;
+  }
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

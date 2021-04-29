@@ -30,6 +30,15 @@ export class TopSellersRankComponent implements OnInit {
       this.vendedor = vendedor;
     });
   }
+
+  getSellerScore(vendedor: Vendedor) {
+    return vendedor.monthly_sells != 0
+      ? (
+          parseInt(vendedor.monthly_sales_price) / vendedor.monthly_sells
+        ).toString()
+      : '0';
+  }
+
   getSortedSellers(sellerList: Vendedor[]) {
     const temp_sorted = sellerList.sort((a, b) =>
       (a.monthly_sells != 0
