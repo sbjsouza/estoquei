@@ -307,19 +307,6 @@
       visibility: hidden;
     }
   }
-  th {
-    text-align: left;
-    color: #4679bd;
-  }
-
-  tbody > tr:nth-of-type(even) {
-    background-color: #daeaff;
-  }
-
-  button {
-    cursor: pointer;
-    margin-top: 1rem;
-  }
 </style>
 
 <!-- Toolbar -->
@@ -347,89 +334,26 @@
 
 <div class="content" role="main" style="width: 100%">
   <!-- Vendas -->
-  <h2 id="pagename" style="text-align: left; width: 100%">Vendas</h2>
-  <p style="text-align: left; width: 100%">Cadastre uma venda</p>
+  <h2 id="pagename" style="text-align: left; width: 100%">Produtos</h2>
+  <p style="text-align: left; width: 100%">Cadastre um produto</p>
 
-  <!-- Vendas -->
-  
+  <card></card>
+  <add-product-component></add-product-component>
+  <!-- Next Steps -->
 
-  <div style="width: 100%; display: table">
-    <div style="display: table-row">
-      <span><h2>Adicionar uma Venda</h2></span>
-      <div class="card-container">
-        <a class="card">
-          <span
-            ><h4>Nome do Produto</h4>
-            <input type="text" pInputText />
-            <h4>SKU do Produto</h4>
-            <input type="text" pInputText />
-            <h4>Valor</h4>
-            <input type="text" pInputText />
-            <h4>Quantidade</h4>
-            <input id="float-input" type="text" pInputText />
-            <h4>ID</h4>
-            <input type="text" pInputText />
-            <div class="p-field p-col-12 p-md-4">
-              <label for="basic">Data</label>
-              <p-calendar inputId="basic"></p-calendar>
-            </div>
+  <!-- Terminal -->
 
-            <td><button>Adicionar</button></td></span
-          >
-        </a>
-      </div>
-      <div style="display: table-cell">
-        <h2 style="text-align: left; width: 100%">Vendas</h2>
-        <h2>Lista de Vendas</h2>
-        <div layout="column">
-          <table id="vendas-table">
-            <tr>
-              <th>Produto</th>
-              <th>SKU</th>
-              <th>ID</th>
-              <th>Quantidade</th>
-              <th>Valor</th>
-              <th>Data</th>
-            </tr>
-            <tbody>
-              <tr *ngFor="let venda of vendas | async">
-                <td>{{ venda.product }}</td>
-                <td>{{ venda.sku }}</td>
-                <td>{{ venda.id }}</td>
-                <td>{{ venda.quantity }}</td>
-                <td>{{ venda.value }}</td>
-                <td>{{ venda.data }}</td>
-              </tr>
-            </tbody>
-          </table>
+  <!-- Links -->
 
-          <button
-            class="btn btn-submit btn-sm float-right"
-            (click)="downloadButtonPush()"
-            type="submit"
-          >
-            Download
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Next Steps -->
-
-    <!-- Terminal -->
-
-    <!-- Links -->
-
-    <!-- Footer -->
-  </div>
-
-  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-  <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-  <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-  <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-  <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-  <router-outlet></router-outlet>
+  <!-- Footer -->
 </div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>
