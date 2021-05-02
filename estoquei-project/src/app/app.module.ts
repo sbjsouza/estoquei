@@ -17,6 +17,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { CalendarModule } from 'primeng/calendar';
 import { ProductListComponent } from './product-list/product-list.component';
 import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.component';
+import { LojasComponent } from './lojas/lojas.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.com
     AddProductComponentComponent,
     ProductListComponent,
     TopSellersRankComponent,
+    LojasComponent,
   ],
   imports: [
     BrowserModule,
