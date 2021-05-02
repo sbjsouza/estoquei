@@ -13,6 +13,7 @@ import { AddProductComponentComponent } from './add-product-component/add-produc
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { AvatarModule } from 'primeng/avatar';
+import {GMapModule} from 'primeng/gmap';
 
 import { CalendarModule } from 'primeng/calendar';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -41,6 +42,7 @@ import { StoreFilterComponent } from './store-filter/store-filter.component';
     TableModule,
     AvatarModule,
     CalendarModule,
+    GMapModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

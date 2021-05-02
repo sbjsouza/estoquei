@@ -1,33 +1,37 @@
-<p-table [value]="sortedLojas">
+<p-table [value]="lojas">
     <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
-            Products
-           
+            Lojas
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th>Nome</th>
             <th>Imagem</th>
-            <th>Lucro</th>
-            <th>Vendas</th>
-            <th>Despesas</th>
+            <th pSortableColumn="category">Lucro <p-sortIcon field="category"></p-sortIcon></th>
+            <th pSortableColumn="quantity">Vendas <p-sortIcon field="quantity"></p-sortIcon></th>
+            <th pSortableColumn="price">Despesas <p-sortIcon field="price"></p-sortIcon></th>
             <th>Localização</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-loja>
         <tr>
-            <td>{{product.name}}</td>
-            <td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="p-shadow-4" /></td>
-            <td>{{product.price | currency:'USD'}}</td>
-            <td>{{product.category}}</td>
+            <td>{{loja.name}}</td>
+            <td>IMAGEM</td>
+            <td>{{loja.store_profit | currency:'BRL'}}</td>
+            <td>{{loja.monthly_sells | currency:'BRL'}}</td>
+            <td>{{loja.monthly_expense_cost | currency:'BRL'}}</td>
+            <td><a href= {{loja.store_localization_url}}>Ver Localização</a></td>
+            <!-- <td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="p-shadow-4" /></td>
+            <td>{{loja.price | currency:'USD'}}</td>
+            <td>{{loja.category}}</td>
             <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
-            <td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td>
+            <td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{loja.inventoryStatus}}</span></td> -->
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            In total there are {{products ? products.length : 0 }} stores.
+            No total de {{lojas ? lojas.length : 0 }} Lojas.
         </div>
     </ng-template>
 </p-table>

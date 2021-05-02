@@ -1,5 +1,3 @@
-import { Produto } from '../models/produto';
-
 import { Injectable } from '@angular/core';
 import {
   HttpClient,
@@ -25,16 +23,16 @@ export class LojasService {
   };
 
   // Obtem todos as Lojas
-  getProducts(): Observable<Lojas[]> {
+  getStores(): Observable<Lojas[]> {
     return this.httpClient
       .get<Lojas[]>(this.url)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   // Obtem uma loja pelo id
-  getProduct(sku: number): Observable<Lojas> {
+  getStoreById(id: number): Observable<Lojas> {
     return this.httpClient
-      .get<Lojas>(this.url + '/' + sku)
+      .get<Lojas>(this.url + '/' + id)
       .pipe(retry(2), catchError(this.handleError));
   }
 
