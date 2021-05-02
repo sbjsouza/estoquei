@@ -82,5 +82,40 @@
       "value": "39.90",
       "data": "2021-05-06"
     }
+  ],
+  "lojas": [
+    {
+      "name": "Lojão",
+      "store_localization_url": "https://www.google.com.br/maps/place/LOJ%C3%83O/@-8.0862018,-34.9042008,15z/data=!3m1!5s0x7ab1f3b239d5b27:0x90fcc192be140cdd!4m9!1m2!2m1!1sLojao!3m5!1s0x7ab1f3bec5d8d93:0x22fce176caea7700!8m2!3d-8.0862018!4d-34.8954461!15sCgVMb2phb1oOCgVsb2phbyIFbG9qYW-SAQ9jb3NtZXRpY3Nfc3RvcmU",
+      "id": 1,
+      "monthly_sells": 400,
+      "monthly_expense_cost": 300,
+      "store_profit": 100
+    },
+    {
+      "name": "Varejão",
+      "store_localization_url": "https://www.google.com.br/maps/place/Varej%C3%A3o+do+Povo/@-8.0862002,-34.9304656,13z/data=!4m9!1m2!2m1!1svarejao!3m5!1s0x7ab192bda710d69:0x3a46c0c062ec7c72!8m2!3d-8.0683125!4d-34.9099961!15sCgd2YXJlamFvWhIKB3ZhcmVqYW8iB3ZhcmVqYW-SAQ1ncm9jZXJ5X3N0b3Jl",
+      "id": 2,
+      "monthly_sells": 500,
+      "monthly_expense_cost": 400,
+      "store_profit": 100
+    },
+    {
+      "name": "Atacadão",
+      "store_localization_url": "https://www.google.com.br/maps/place/Atacad%C3%A3o/@-8.0861972,-34.9304656,13z/data=!4m9!1m2!2m1!1satacadao!3m5!1s0x7ab1983960839c3:0x92a437c50ef0791b!8m2!3d-8.0297192!4d-34.9440174!15sCghhdGFjYWRhbyIDiAEBkgEKd2hvbGVzYWxlcg",
+      "id": 3,
+      "monthly_sells": 400,
+      "monthly_expense_cost": 350,
+      "store_profit": 50
+    },
+    {
+      "name": "Descontão",
+      "store_localization_url": "https://www.google.com.br/maps/place/DESKONT%C3%83O+CEASA/@-8.0788791,-34.9396361,15z/data=!4m5!3m4!1s0x7ab1ea967a1e323:0xfaa7039bbdd6d6c0!8m2!3d-8.0742155!4d-34.9458909",
+      "id": 4,
+      "monthly_sells": 100,
+      "monthly_expense_cost": 150,
+      "store_profit": -50
+    }
+
   ]
 }

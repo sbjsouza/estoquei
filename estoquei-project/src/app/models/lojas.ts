@@ -4,7 +4,7 @@ export class Lojas {
     id: number;
     monthly_sells: number;
     monthly_expense_cost: number;
-    seller_evaluation: string;
+    store_profit: number;
   
     constructor() {
       this.clean();
@@ -16,7 +16,7 @@ export class Lojas {
       this.id = 0;
       this.monthly_sells = 0;
       this.monthly_expense_cost = 0;
-      this.seller_evaluation = '';
+      this.store_profit = 0;
     }
   }
   

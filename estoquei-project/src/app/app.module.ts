@@ -18,6 +18,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ProductListComponent } from './product-list/product-list.component';
 import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.component';
 import { LojasComponent } from './lojas/lojas.component';
+import { StoreFilterComponent } from './store-filter/store-filter.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LojasComponent } from './lojas/lojas.component';
     ProductListComponent,
     TopSellersRankComponent,
     LojasComponent,
+    StoreFilterComponent,
   ],
   imports: [
     BrowserModule,
