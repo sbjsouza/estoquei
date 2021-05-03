@@ -9,7 +9,7 @@ Scenario: Obter valor de venda de um determinado produto
     Then o sistema retorna o total de "160"
 
 # UI
-Scenario: 
+Scenario: Exportar planilha de vendas
     Given eu estou na página de "Vendas"
     When eu clico em "Download"
     Then o sistema baixa o arquivo "TabelaVendas.csv"

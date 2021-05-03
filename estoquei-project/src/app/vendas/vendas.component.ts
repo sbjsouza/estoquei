@@ -73,36 +73,5 @@ export class VendasComponent implements OnInit {
     
   }
 
-  downloadCSVFromJson = (filename, arrayOfJson) => {
-    // convert JSON to CSV
-    const replacer = (key, value) => value === null ? '' : value // specify how you want to handle null values here
-    const header = Object.keys(arrayOfJson[0])
-    let csv = arrayOfJson.map(row => header.map(fieldName => 
-    JSON.stringify(row[fieldName], replacer)).join(','))
-    csv.unshift(header.join(','))
-    csv = csv.join('\r\n')
-  
-    // Create link and download
-    var blob = new Blob([csv], { type: 'text/csv' });
-    var url = window.URL.createObjectURL(blob);
-    
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = 'TabelaVendas.csv';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-
-    
-  };
-
-  downloadCSV(){
-    this.downloadCSVFromJson(`myCustomName.csv`, this.vendas)
-  }
-  
-  
-  
-
 }
 
