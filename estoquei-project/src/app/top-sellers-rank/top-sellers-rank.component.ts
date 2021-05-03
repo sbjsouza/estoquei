@@ -19,10 +19,13 @@ export class TopSellersRankComponent implements OnInit {
     this.getSellers();
   }
 
+  handleClick() {
+    this.sortedVendedores = this.getSortedSellers(this.sortedVendedores);
+  }
+
   getSellers() {
     this.vendedorService.getSellers().subscribe((vendedores: Vendedor[]) => {
-      this.vendedores = vendedores;
-      this.sortedVendedores = this.getSortedSellers(this.vendedores);
+      this.sortedVendedores = vendedores;
     });
   }
   getSellersById(id: number) {

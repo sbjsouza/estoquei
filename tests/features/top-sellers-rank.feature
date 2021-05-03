@@ -11,9 +11,9 @@ Scenario: Validar que o sistema retorna o vendedor corretamente pelo id
 
 # UI
 Scenario: Listar vendedores ordenados pelo score
-    Given eu estou na página "Vendas"
+    Given eu estou na página "Vendedor"
     And o vendedor está registrado com o id "1", nome "Rafael Portugal", Número de vendas "1" e Valor bruto de vendas "32000.00"
     And o vendedor está registrado com o id "2", nome "Gil do Vigor", Número de vendas "2" e Valor bruto de vendas "70000.00"
     And o vendedor está registrado com o id "3", nome "Boninho", Número de vendas "1" e Valor bruto de vendas "10000.00"
-    When eu vou para página "Vendedor"
-    Then o sistema lista o vendedor com nome "Gil do Vigor", o vendedor com nome "Rafael Portugal" e o vendedor com nome "Boninho", nesta ordem
+    When eu vou seleciono "Ordenar"
+    Then o sistema lista em uma tabela o vendedor com nome "Gil do Vigor", o vendedor com nome "Rafael Portugal" e o vendedor com nome "Boninho", nesta ordem

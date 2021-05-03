@@ -13,6 +13,7 @@ import { AddProductComponentComponent } from './add-product-component/add-produc
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { AvatarModule } from 'primeng/avatar';
+import { ButtonModule } from 'primeng/button';
 
 import { CalendarModule } from 'primeng/calendar';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -37,6 +38,7 @@ import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.com
     TableModule,
     AvatarModule,
     CalendarModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
