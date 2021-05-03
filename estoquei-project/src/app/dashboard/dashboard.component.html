@@ -1,21 +1,3 @@
-<!-- Toolbar -->
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-    <a routerLink=""><img width="30" alt="Angular Logo" src="https://cdn.pixabay.com/photo/2016/09/16/09/20/box-1673579_960_720.png" />
-    </a>
-    <span routerLink="">Estoquei</span>
-    <div class="spacer"></div>
-    <nav>
-        <a style="color: #e6ebf1; padding: 20px" routerLink="/vendas"> Vendas </a>
-        <a style="color: #e6ebf1; padding: 20px" routerLink="/produtos">
-            Produtos
-        </a>
-        <a style="color: #e6ebf1; padding: 20px" routerLink="/vendedor">
-            Vendedor
-        </a>
-    </nav>
-</div>
-
 <div class="content" role="main" style="width: 100%">
     <!-- Dashboard -->
     <h2 id="pagename" style="text-align: left; width: 100%">Dashboard</h2>
@@ -27,19 +9,17 @@
             <div layout="column">
                 <table id="vendas-table">
                     <tr>
-                        <th>Produto</th>
-                        <th>SKU</th>
                         <th>ID</th>
+                        <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Valor</th>
                     </tr>
                     <tbody>
                         <tr *ngFor="let venda of topSales | async">
-                            <td>{{ venda.product }}</td>
-                            <td>{{ venda.sku }}</td>
-                            <td>{{ venda.id }}</td>
-                            <td>{{ venda.quantity }}</td>
-                            <td>{{ venda.value }}</td>
+                            <td name="top-sales-id">{{ venda.id }}</td>
+                            <td name="top-sales-product">{{ venda.product }}</td>
+                            <td name="top-sales-quantity">{{ venda.quantity }}</td>
+                            <td name="top-sales-value">{{ venda.value }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -54,21 +34,19 @@
             <div layout="column">
                 <table id="vendas-table">
                     <tr>
-                        <th>Produto</th>
-                        <th>SKU</th>
                         <th>ID</th>
+                        <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Valor</th>
                         <th>Faturamento(Quantidade x Valor)</th>
                     </tr>
                     <tbody>
                         <tr *ngFor="let venda of topRevenues | async">
-                            <td>{{ venda.product }}</td>
-                            <td>{{ venda.sku }}</td>
-                            <td>{{ venda.id }}</td>
-                            <td>{{ venda.quantity }}</td>
-                            <td>{{ venda.value }}</td>
-                            <td>{{ venda.quantity * venda.value }}</td>
+                            <td name="top-revenue-id">{{ venda.id }}</td>
+                            <td name="top-revenue-product">{{ venda.product }}</td>
+                            <td name="top-revenue-quantity">{{ venda.quantity }}</td>
+                            <td name="top-revenue-value">{{ venda.value }}</td>
+                            <td name="top-revenue-revenue">{{ venda.quantity * venda.value }}</td>
                         </tr>
                     </tbody>
                 </table>
