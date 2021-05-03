@@ -17,18 +17,18 @@ Scenario: Existe ao menos uma venda cadastrada na plataforma
 
 Scenario: Existe mais de três vendas cadastradas na plataforma para mais de três produtos diferentes
     Given eu estou na página "Dashboard de Produtos"
-    And existe o produto "Cadeira" cadastrado no valor de "40 reais"
-    And existe quatro vendas do produto "Cadeira"
-    And existe o produto "Mesa" cadastrado no valor de "100 reais"
-    And existe duas vendas do produto "Mesa"
-    And existe o produto "Banquinho" cadastrado no valor de "25 reais"
-    And existe três vendas do produto "Banquinho"
-    And existe o produto "Vaso de Centro" cadastrado no valor de "20 reais"
-    And existe uma venda do produto "Vaso de Centro"
+    And existe o produto "Cadeira" cadastrado com id "2" no valor de "40 reais"
+    And existe quatro vendas do produto "Cadeira" com id "2"
+    And existe o produto "Mesa" cadastrado com id "3" no valor de "100 reais"
+    And existe duas vendas do produto "Mesa" com id "3"
+    And existe o produto "Banquinho" cadastrado com id "4" no valor de "25 reais"
+    And existe três vendas do produto "Banquinho" com id "4"
+    And existe o produto "Vaso de Centro" cadastrado com id "5" no valor de "20 reais"
+    And existe uma venda do produto "Vaso de Centro" com id "5"
     When eu solicito ao sistema o "Dashboard de Produtos"
     Then o sistema retorna o "Dashboard de Produtos" contendo três itens na lista de "top_sales" e três itens na lista de "top_revenues"
-    And a lista de "top_sales" contem respectivamente: "Cadeira"(4), "Banquinho"(3), "Mesa"(2)
-    And a lista de "top_revenues" contem respectivamente: "Mesa"(200), "Cadeira"(160), "Banquinho"(75)
+    And a lista de "top_sales" contem respectivamente: "Cadeira" de id "2" com "4" vendas, "Banquinho" de id "4" com "3" vendas, "Mesa" de id "3" com "2" vendas
+    And a lista de "top_revenues" contem respectivamente: "Mesa" de id "3" faturando "200" reais, "Cadeira" de id "2" faturando "160" reais, "Banquinho" de id "4" faturando "75" reais
 
 # UI
 Scenario: Existe mais de três vendas cadastradas na plataforma para mais de três produtos diferentes
@@ -44,4 +44,4 @@ Scenario: Existe mais de três vendas cadastradas na plataforma para mais de tr�
     When eu vou para página "Dashboard de Produtos"
     Then o sistema mostra duas tabelas no dashboard de produtos
     And uma tabela com título "Produtos mais vendidos" contendo respectivamente: "Cadeira"(4), "Banquinho"(3), "Mesa"(2)
-    And uma tabela com título "Produtos com maior faturamento" contendo respectivamente: "Mesa"(200), "Cadeira"(140), "Banquinho"(75)
+    And uma tabela com título "Produtos com maior faturamento" contendo respectivamente: "Mesa"(200), "Cadeira"(160), "Banquinho"(75)
