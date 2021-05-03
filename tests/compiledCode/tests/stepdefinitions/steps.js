@@ -63,7 +63,7 @@ function compareSeller(id, name, monthly_sells, monthly_sales_price, seller) {
 var seller;
 cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
     Given(/^eu estou na página "([^\"]*)"$/, (pagename) => __awaiter(this, void 0, void 0, function* () {
-        yield protractor_1.browser.get("http://localhost:4200/");
+        yield protractor_1.browser.get(`http://localhost:4200/${pagename.toString().toLowerCase()}`);
         yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
     }));
     Given(/^o vendedor está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, monthly_sells, monthly_sales_price) => __awaiter(this, void 0, void 0, function* () {
@@ -77,11 +77,15 @@ cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
     When(/^eu pergunto ao sistema pelo vendedor com id "(\d*)"$/, (id) => __awaiter(this, void 0, void 0, function* () {
         seller = yield getSellerId(id.toString());
     }));
+    When(/^eu seleciono "([^\"]*)"$/, (buttonName) => __awaiter(this, void 0, void 0, function* () {
+        protractor_1.browser.sleep(2000);
+        yield expect(protractor_1.element(protractor_1.by.buttonText(buttonName.toString())));
+    }));
     Then(/^o sistema retorna o vendedor que está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, monthly_sells, monthly_sales_price) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get("http://localhost:4200/");
         yield compareSeller(id.toString(), name.toString(), monthly_sells.toString(), monthly_sales_price.toString(), seller);
     }));
-    Then(/^o sistema lista o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/, (seller1, seller2, seller3) => __awaiter(this, void 0, void 0, function* () {
+    Then(/^o sistema lista em uma tabela o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/, (seller1, seller2, seller3) => __awaiter(this, void 0, void 0, function* () {
         let tmp_list = [seller1, seller2, seller3];
         yield protractor_1.element
             .all(protractor_1.by.css("#sellername"))
