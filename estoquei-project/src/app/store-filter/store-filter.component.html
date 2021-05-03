@@ -8,9 +8,9 @@
         <tr>
             <th>Nome</th>
             <th>Imagem</th>
-            <th pSortableColumn="category">Lucro <p-sortIcon field="category"></p-sortIcon></th>
-            <th pSortableColumn="quantity">Vendas <p-sortIcon field="quantity"></p-sortIcon></th>
-            <th pSortableColumn="price">Despesas <p-sortIcon field="price"></p-sortIcon></th>
+            <th pSortableColumn="store_profit">Lucro <p-sortIcon field="store_profit" ></p-sortIcon></th>
+            <th pSortableColumn="monthly_sells">Vendas <p-sortIcon field="monthly_sells"></p-sortIcon></th>
+            <th pSortableColumn="monthly_expense_cost">Despesas <p-sortIcon field="monthly_expense_cost"></p-sortIcon></th>
             <th>Localização</th>
         </tr>
     </ng-template>
@@ -18,15 +18,10 @@
         <tr>
             <td>{{loja.name}}</td>
             <td><img [src]="'assets/images/' + loja.image" [alt]="loja.name" width="100" height="60" class="p-shadow-4" /></td>
-            <td>{{loja.store_profit | currency:'BRL'}}</td>
+            <td>{{loja.store_profit | currency:'BRL'}} </td>
             <td>{{loja.monthly_sells | currency:'BRL'}}</td>
             <td>{{loja.monthly_expense_cost | currency:'BRL'}}</td>
             <td><a href= {{loja.store_localization_url}}>Ver Localização</a></td>
-            <!-- <td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="p-shadow-4" /></td>
-            <td>{{loja.price | currency:'USD'}}</td>
-            <td>{{loja.category}}</td>
-            <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
-            <td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{loja.inventoryStatus}}</span></td> -->
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
@@ -35,10 +30,3 @@
         </div>
     </ng-template>
 </p-table>
-
-<!-- "name": "Atacadão",
-      "store_localization_url": "https://www.google.com.br/maps/place/Atacad%C3%A3o/@-8.0861972,-34.9304656,13z/data=!4m9!1m2!2m1!1satacadao!3m5!1s0x7ab1983960839c3:0x92a437c50ef0791b!8m2!3d-8.0297192!4d-34.9440174!15sCghhdGFjYWRhbyIDiAEBkgEKd2hvbGVzYWxlcg",
-      "id": 3,
-      "monthly_sells": 400,
-      "monthly_expense_cost": 350,
-      "store_profit": 50 -->
