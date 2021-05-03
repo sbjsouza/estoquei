@@ -28,7 +28,7 @@ Scenario: Existe mais de três vendas cadastradas na plataforma para mais de tr�
     When eu solicito ao sistema o "Dashboard de Produtos"
     Then o sistema retorna o "Dashboard de Produtos" contendo três itens na lista de "top_sales" e três itens na lista de "top_revenues"
     And a lista de "top_sales" contem respectivamente: "Cadeira"(4), "Banquinho"(3), "Mesa"(2)
-    And a lista de "top_revenues" contem respectivamente: "Mesa"(200), "Cadeira"(140), "Banquinho"(75)
+    And a lista de "top_revenues" contem respectivamente: "Mesa"(200), "Cadeira"(160), "Banquinho"(75)
 
 # UI
 Scenario: Existe mais de três vendas cadastradas na plataforma para mais de três produtos diferentes
