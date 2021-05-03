@@ -17,7 +17,7 @@
     <ng-template pTemplate="body" let-loja>
         <tr>
             <td>{{loja.name}}</td>
-            <td>IMAGEM</td>
+            <td><img [src]="'assets/images/' + loja.image" [alt]="loja.name" width="100" height="60" class="p-shadow-4" /></td>
             <td>{{loja.store_profit | currency:'BRL'}}</td>
             <td>{{loja.monthly_sells | currency:'BRL'}}</td>
             <td>{{loja.monthly_expense_cost | currency:'BRL'}}</td>
