@@ -61,12 +61,11 @@ async function compareSeller(
 }
 var seller: Vendedor;
 defineSupportCode(function ({ Given, When, Then }) {
+// Given eu estou na página "Lojas"
   Given(/^eu estou na página "([^\"]*)"$/, async (pagename) => {
-    await browser.get(
-      `http://localhost:4200/${pagename.toString().toLowerCase()}`
-    );
+    await browser.get("http://localhost:4200/" + pagename.toString().toLowerCase());
     await expect(element(by.css("#pagename")).getText()).to.eventually.equal(
-      pagename.toString()
+    pagename.toString()
     );
   });
   Given(

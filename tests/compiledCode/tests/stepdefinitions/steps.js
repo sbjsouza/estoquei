@@ -62,8 +62,9 @@ function compareSeller(id, name, monthly_sells, monthly_sales_price, seller) {
 }
 var seller;
 cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
+    // Given eu estou na página "Lojas"
     Given(/^eu estou na página "([^\"]*)"$/, (pagename) => __awaiter(this, void 0, void 0, function* () {
-        yield protractor_1.browser.get(`http://localhost:4200/${pagename.toString().toLowerCase()}`);
+        yield protractor_1.browser.get("http://localhost:4200/" + pagename.toString().toLowerCase());
         yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
     }));
     Given(/^o vendedor está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, monthly_sells, monthly_sales_price) => __awaiter(this, void 0, void 0, function* () {
