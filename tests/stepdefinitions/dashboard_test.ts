@@ -1,31 +1,14 @@
 import { defineSupportCode } from 'cucumber';
-import { browser, $, element, ElementArrayFinder, by } from 'protractor';
-import * as fs from 'fs';
+import { browser, element, by } from 'protractor';
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 import request = require("request-promise");
 
-import { Vendas } from "../../estoquei-project/src/app/models/vendas";
-
 let dashboardData = {};
 
-async function getTotal(venda: Vendas) {
-  return parseFloat(venda.value) * venda.quantity
-}
-
-async function getSaleID(id: String) {
-  const options = {
-    method: `GET`,
-    json: true,
-    uri: `http://localhost:3000/vendas/${id}`,
-  };
-  try {
-    const response = await request(options);
-    return response;
-  } catch (error) {
-    Promise.reject(error);
-    expect(false).to.equal(true);
-  }
+function baseTestProd(expected, current) { // Extract Function
+  expect(current['id'].toString()).to.equal(expected['id'].toString());
+  expect(current['product'].toString()).to.equal(expected['product'].toString());
 }
 
 async function checkProd(
@@ -41,8 +24,8 @@ async function checkProd(
   };
   try {
     const response = await request(options);
-    expect(response.id.toString()).to.equal(id);
-    expect(response.product.toString()).to.equal(product);
+    const baseExpected = {'id': id, 'product': product};
+    baseTestProd(baseExpected, response);
     expect(parseFloat(response.value.toString())).to.equal(parseFloat(price.toString()));
     expect(response.quantity.toString()).to.equal(sales);
     return Promise.resolve(true);
@@ -136,15 +119,11 @@ defineSupportCode(function ({ Given, When, Then }) {
         const expectedTestValue = expected["key"];
         const current = list[i];
         const testCase = current["test_case"];
-        if (testCase == "vendas") {
-          expect(current['id'].toString()).to.equal(expected['id'].toString());
-          expect(current['product'].toString()).to.equal(expected['product'].toString());
+        baseTestProd(expected, current);
 
+        if (testCase == "vendas") {
           expect(parseFloat(current['quantity'].toString())).to.equal(parseFloat(expectedTestValue.toString()));
         } else if (testCase == "reais de faturamento") {
-          expect(current['id'].toString()).to.equal(expected['id'].toString());
-          expect(current['product'].toString()).to.equal(expected['product'].toString());
-
           const revenue = current['quantity'] * parseFloat(current['value'].toString());
           expect(revenue).to.equal(parseFloat(expectedTestValue.toString()));
         }
