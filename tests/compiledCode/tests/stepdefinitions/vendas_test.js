@@ -17,6 +17,7 @@ let expect = chai.expect;
 const request = require("request-promise");
 let pAND = ((p, q) => p.then(a => q.then(b => a && b)));
 let total_value = "";
+const homedir = require('os').homedir();
 function getTotal(venda) {
     return __awaiter(this, void 0, void 0, function* () {
         return parseFloat(venda.value) * venda.quantity;
@@ -75,7 +76,11 @@ cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
         total_value = (yield getTotal(sale)).toString();
     }));
     Then(/^o sistema baixa o arquivo "([^\"]*)"$/, (file_name) => __awaiter(this, void 0, void 0, function* () {
-        yield fs.existsSync(file_name);
+        yield protractor_1.browser.wait(function () {
+            return __awaiter(this, void 0, void 0, function* () {
+                return yield fs.existsSync(homedir + '/Downloads/' + file_name);
+            });
+        }, 30 * 1000, "Arquivo não foi baixado em 30 segundos");
     }));
     Then(/^o sistema retorna o total de "([^\"]*)"$/, (value) => __awaiter(this, void 0, void 0, function* () {
         yield expect(total_value).to.equal(value);
