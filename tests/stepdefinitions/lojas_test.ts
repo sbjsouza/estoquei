@@ -1,5 +1,5 @@
 import { defineSupportCode } from "cucumber";
-import { browser, $, element, ElementArrayFinder, by } from "protractor";
+import { browser, element, by } from "protractor";
 let chai = require("chai").use(require("chai-as-promised"));
 let expect = chai.expect;
 import request = require("request-promise");
@@ -136,24 +136,4 @@ defineSupportCode(function ({ Given, When, Then }) {
       );
     }
   );
-//   Then(
-//     /^o sistema lista em uma tabela o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/,
-//     async (seller1, seller2, seller3) => {
-//       let tmp_list = [seller1, seller2, seller3];
-//       await element
-//         .all(by.css("#sellername"))
-//         .map(function (elm) {
-//           return elm.getText();
-//         })
-//         .then(function (texts) {
-//           let validate = true;
-//           texts.forEach((text, index) => {
-//             if (text != tmp_list[index]) {
-//               validate = false;
-//             }
-//           });
-//           expect(validate).to.equal(true);
-//         });
-//     }
-//   );
 });
