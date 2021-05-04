@@ -61,7 +61,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     })
 
     Given(
-        /^uma venda cadastrada no sistema do produto "([^\"]*)" que tem id "([^\"]*)"$/,
+        /^a venda cadastrada no sistema do produto "([^\"]*)" que tem id "([^\"]*)"$/,
         async (product, id) => {
           await browser.get("http://localhost:4200/");
           await checkProd(
