@@ -1,0 +1,35 @@
+.content {
+    display: flex;
+    margin: 82px 40px;
+    padding: 0 16px;
+    max-width: 960px;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+}
+
+th {
+    color: #4679bd;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 0 15px;
+}
+
+tbody>tr:nth-of-type(even) {
+    background-color: #daeaff;
+}

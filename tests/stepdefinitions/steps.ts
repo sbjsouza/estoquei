@@ -62,7 +62,9 @@ async function compareSeller(
 var seller: Vendedor;
 defineSupportCode(function ({ Given, When, Then }) {
   Given(/^eu estou na página "([^\"]*)"$/, async (pagename) => {
-    await browser.get("http://localhost:4200/");
+    await browser.get(
+      `http://localhost:4200/${pagename.toString().toLowerCase()}`
+    );
     await expect(element(by.css("#pagename")).getText()).to.eventually.equal(
       pagename.toString()
     );
@@ -90,6 +92,12 @@ defineSupportCode(function ({ Given, When, Then }) {
   When(/^eu pergunto ao sistema pelo vendedor com id "(\d*)"$/, async (id) => {
     seller = await getSellerId(id.toString());
   });
+
+  When(/^eu seleciono "([^\"]*)"$/, async (buttonName) => {
+    browser.sleep(2000);
+    await expect(element(by.buttonText(buttonName.toString())));
+  });
+
   Then(
     /^o sistema retorna o vendedor que está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/,
     async (id, name, monthly_sells, monthly_sales_price) => {
@@ -104,7 +112,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     }
   );
   Then(
-    /^o sistema lista o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/,
+    /^o sistema lista em uma tabela o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/,
     async (seller1, seller2, seller3) => {
       let tmp_list = [seller1, seller2, seller3];
       await element
