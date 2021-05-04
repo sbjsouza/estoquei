@@ -1,0 +1,56 @@
+<div class="content" role="main" style="width: 100%">
+    <!-- Dashboard -->
+    <h2 id="pagename" style="text-align: left; width: 100%">Dashboard de Produtos</h2>
+
+    <!-- Produtos mais vendidos -->
+    <div style="width: 100%; display: table">
+        <div style="display: table-cell">
+            <h2>Produtos mais vendidos</h2>
+            <div layout="column">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Valor</th>
+                    </tr>
+                    <tbody>
+                        <tr *ngFor="let venda of topSales | async; let i = index">
+                            <td>{{ venda.id }}</td>
+                            <td id="top-sales-product">{{ venda.product }}</td>
+                            <td>{{ venda.quantity }}</td>
+                            <td>{{ venda.value }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Produtos com maior faturamento(valor x vendas) -->
+    <div style="width: 100%; display: table ">
+        <div style="display: table-cell ">
+            <h2 name="dashboard-table ">Produtos com maior faturamento(valor x vendas)</h2>
+            <div layout="column ">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Valor</th>
+                        <th>Faturamento(Quantidade x Valor)</th>
+                    </tr>
+                    <tbody>
+                        <tr *ngFor="let venda of topRevenues | async; let i= index">
+                            <td>{{ venda.id }}</td>
+                            <td id="top-revenue-product">{{ venda.product }}</td>
+                            <td>{{ venda.quantity }}</td>
+                            <td>{{ venda.value }}</td>
+                            <td>{{ venda.quantity * venda.value }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
