@@ -62,7 +62,6 @@ function compareStore(id, name, store_profit, loja) {
 }
 var loja;
 cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
-    // Given eu estou na página "Lojas"
     Given(/^eu estou na página "([^\"]*)"$/, (pagename) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get("http://localhost:4200/" + pagename.toString().toLowerCase());
         yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
@@ -72,22 +71,10 @@ cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
         yield protractor_1.browser.get("http://localhost:4200/");
         yield checkStore(id.toString(), name.toString(), store_profit.toString());
     }));
-    Given(/^o vendedor está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, store_profit) => __awaiter(this, void 0, void 0, function* () {
-        yield protractor_1.browser.get("http://localhost:4200/");
-        yield checkStore(id.toString(), name.toString(), store_profit.toString());
-    }));
-    When(/^eu vou para página "([^\"]*)"$/, (pagename) => __awaiter(this, void 0, void 0, function* () {
-        yield protractor_1.browser.get(`http://localhost:4200/${pagename.toString().toLowerCase()}/`);
-        yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
-    }));
-    When(/^eu pergunto ao sistema pela loja com id "(\d*)"$/, (id) => __awaiter(this, void 0, void 0, function* () {
-        loja = yield getStoreById(id.toString());
-    }));
     When(/^eu seleciono "([^\"]*)"$/, (buttonProfit) => __awaiter(this, void 0, void 0, function* () {
         protractor_1.browser.sleep(2000);
         yield expect(protractor_1.element(protractor_1.by.buttonText(buttonProfit.toString())));
     }));
-    // Then o sistema lista as lojas com nome "Descontão", "Atacadão", "Varejão" e "Lojão", nesta ordem
     Then(/^o sistema lista as lojas com nome "([^\"]*)", "([^\"]*)", "([^\"]*)" e "([^\"]*)", nesta ordem$/, (loja1, loja2, loja3, loja4) => __awaiter(this, void 0, void 0, function* () {
         let tmp_list = [loja1, loja2, loja3, loja4];
         yield protractor_1.element
@@ -104,6 +91,9 @@ cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
             });
             expect(validate).to.equal(true);
         });
+    }));
+    When(/^eu pergunto ao sistema pela loja com id "(\d*)"$/, (id) => __awaiter(this, void 0, void 0, function* () {
+        loja = yield getStoreById(id.toString());
     }));
     Then(/^o sistema retorna a loja que está registrada com o id "(\d*)", nome "([^\"]*)" e Lucro "([^\"]*)"$/, (id, name, store_profit) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get("http://localhost:4200/");
