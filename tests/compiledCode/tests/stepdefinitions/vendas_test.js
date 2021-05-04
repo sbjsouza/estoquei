@@ -63,7 +63,7 @@ cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
         yield protractor_1.browser.get("http://localhost:4200/");
         yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
     }));
-    Given(/^uma venda cadastrada no sistema do produto "([^\"]*)" que tem id "([^\"]*)"$/, (product, id) => __awaiter(this, void 0, void 0, function* () {
+    Given(/^a venda cadastrada no sistema do produto "([^\"]*)" que tem id "([^\"]*)"$/, (product, id) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get("http://localhost:4200/");
         yield checkProd(id.toString(), product.toString());
     }));
