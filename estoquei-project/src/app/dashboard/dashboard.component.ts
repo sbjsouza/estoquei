@@ -14,9 +14,7 @@ export class DashboardComponent implements OnInit {
   topSales: Observable<Vendas[]>;
   vendas: Observable<Vendas[]>;
 
-  constructor(private vendasService: VendasService) {
-    console.log('heree');
-  }
+  constructor(private vendasService: VendasService) {}
 
   ngOnInit(): void {
     this.vendas = this.vendasService.getSells();

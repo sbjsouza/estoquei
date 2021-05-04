@@ -1,31 +1,14 @@
 import { defineSupportCode } from 'cucumber';
-import { browser, $, element, ElementArrayFinder, by } from 'protractor';
-import * as fs from 'fs';
+import { browser, element, by } from 'protractor';
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 import request = require("request-promise");
 
-import { Vendas } from "../../estoquei-project/src/app/models/vendas";
-
 let dashboardData = {};
 
-async function getTotal(venda: Vendas) {
-  return parseFloat(venda.value) * venda.quantity
-}
-
-async function getSaleID(id: String) {
-  const options = {
-    method: `GET`,
-    json: true,
-    uri: `http://localhost:3000/vendas/${id}`,
-  };
-  try {
-    const response = await request(options);
-    return response;
-  } catch (error) {
-    Promise.reject(error);
-    expect(false).to.equal(true);
-  }
+function baseTestProd(expected, current) { // Extract Function
+  expect(current['id'].toString()).to.equal(expected['id'].toString());
+  expect(current['product'].toString()).to.equal(expected['product'].toString());
 }
 
 async function checkProd(
@@ -41,8 +24,8 @@ async function checkProd(
   };
   try {
     const response = await request(options);
-    expect(response.id.toString()).to.equal(id);
-    expect(response.product.toString()).to.equal(product);
+    const baseExpected = {'id': id, 'product': product};
+    baseTestProd(baseExpected, response);
     expect(parseFloat(response.value.toString())).to.equal(parseFloat(price.toString()));
     expect(response.quantity.toString()).to.equal(sales);
     return Promise.resolve(true);
@@ -108,64 +91,42 @@ defineSupportCode(function ({ Given, When, Then }) {
     expect(dashboardData[key_2.toString()].length).to.equal(3);
   });
 
-  Then(/^a lista de "([^\"]*)" contem respectivamente: "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" vendas, "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" vendas, "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" vendas$/,
-    async (key, product_1, id_1, quantity_1, product_2, id_2, quantity_2, product_3, id_3, quantity_3) => {
+  Then(/^a lista de "([^\"]*)" contem respectivamente: "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" "([^\"]*)", "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" "([^\"]*)", "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" "([^\"]*)"$/,
+    async (key, product_1, id_1, test_value_1, test_case_1, product_2, id_2, test_value_2, test_case_2, product_3, id_3, test_value_3, test_case_3) => {
       const list = dashboardData[key.toString()];
       const expectedList = [
         {
           product: product_1,
           id: id_1,
-          quantity: quantity_1,
+          test_case: test_case_1,
+          key: test_value_1,
         },
         {
           product: product_2,
           id: id_2,
-          quantity: quantity_2,
+          test_case: test_case_2,
+          key: test_value_2,
         },
         {
           product: product_3,
           id: id_3,
-          quantity: quantity_3,
+          test_case: test_case_3,
+          key: test_value_3,
         },
       ];
       for (let i = 0; i < 3; i++) {
         const expected = expectedList[i];
+        const expectedTestValue = expected["key"];
         const current = list[i];
-        expect(current['product'].toString()).to.equal(expected['product'].toString());
-        expect(parseFloat(current['quantity'].toString())).to.equal(parseFloat(expected['quantity'].toString()));
-        expect(current['id'].toString()).to.equal(expected['id'].toString());
+        const testCase = current["test_case"];
+        baseTestProd(expected, current);
+
+        if (testCase == "vendas") {
+          expect(parseFloat(current['quantity'].toString())).to.equal(parseFloat(expectedTestValue.toString()));
+        } else if (testCase == "reais de faturamento") {
+          const revenue = current['quantity'] * parseFloat(current['value'].toString());
+          expect(revenue).to.equal(parseFloat(expectedTestValue.toString()));
+        }
       }
     });
-
-    Then(/^a lista de "([^\"]*)" contem respectivamente: "([^\"]*)" de id "([^\"]*)" faturando "([^\"]*)" reais, "([^\"]*)" de id "([^\"]*)" faturando "([^\"]*)" reais, "([^\"]*)" de id "([^\"]*)" faturando "([^\"]*)" reais$/,
-      async (key, product_1, id_1, revenue_1, product_2, id_2, revenue_2, product_3, id_3, revenue_3) => {
-        const list = dashboardData[key.toString()];
-        const expectedList = [
-          {
-            product: product_1,
-            id: id_1,
-            revenue: revenue_1,
-          },
-          {
-            product: product_2,
-            id: id_2,
-            revenue: revenue_2,
-          },
-          {
-            product: product_3,
-            id: id_3,
-            revenue: revenue_3,
-          },
-        ];
-        for (let i = 0; i < 3; i++) {
-          const expected = expectedList[i];
-          const current = list[i];
-          const revenue = current['quantity'] * parseFloat(current['value'].toString());
-          expect(current['product'].toString()).to.equal(expected['product'].toString());
-          expect(revenue).to.equal(parseFloat(expected['revenue'].toString()));
-          expect(current['id'].toString()).to.equal(expected['id'].toString());
-        }
-      });
-    
-
 });
