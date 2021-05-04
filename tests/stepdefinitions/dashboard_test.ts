@@ -108,64 +108,46 @@ defineSupportCode(function ({ Given, When, Then }) {
     expect(dashboardData[key_2.toString()].length).to.equal(3);
   });
 
-  Then(/^a lista de "([^\"]*)" contem respectivamente: "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" vendas, "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" vendas, "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" vendas$/,
-    async (key, product_1, id_1, quantity_1, product_2, id_2, quantity_2, product_3, id_3, quantity_3) => {
+  Then(/^a lista de "([^\"]*)" contem respectivamente: "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" "([^\"]*)", "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" "([^\"]*)", "([^\"]*)" de id "([^\"]*)" com "([^\"]*)" "([^\"]*)"$/,
+    async (key, product_1, id_1, test_value_1, test_case_1, product_2, id_2, test_value_2, test_case_2, product_3, id_3, test_value_3, test_case_3) => {
       const list = dashboardData[key.toString()];
       const expectedList = [
         {
           product: product_1,
           id: id_1,
-          quantity: quantity_1,
+          test_case: test_case_1,
+          key: test_value_1,
         },
         {
           product: product_2,
           id: id_2,
-          quantity: quantity_2,
+          test_case: test_case_2,
+          key: test_value_2,
         },
         {
           product: product_3,
           id: id_3,
-          quantity: quantity_3,
+          test_case: test_case_3,
+          key: test_value_3,
         },
       ];
       for (let i = 0; i < 3; i++) {
         const expected = expectedList[i];
+        const expectedTestValue = expected["key"];
         const current = list[i];
-        expect(current['product'].toString()).to.equal(expected['product'].toString());
-        expect(parseFloat(current['quantity'].toString())).to.equal(parseFloat(expected['quantity'].toString()));
-        expect(current['id'].toString()).to.equal(expected['id'].toString());
+        const testCase = current["test_case"];
+        if (testCase == "vendas") {
+          expect(current['id'].toString()).to.equal(expected['id'].toString());
+          expect(current['product'].toString()).to.equal(expected['product'].toString());
+
+          expect(parseFloat(current['quantity'].toString())).to.equal(parseFloat(expectedTestValue.toString()));
+        } else if (testCase == "reais de faturamento") {
+          expect(current['id'].toString()).to.equal(expected['id'].toString());
+          expect(current['product'].toString()).to.equal(expected['product'].toString());
+
+          const revenue = current['quantity'] * parseFloat(current['value'].toString());
+          expect(revenue).to.equal(parseFloat(expectedTestValue.toString()));
+        }
       }
     });
-
-    Then(/^a lista de "([^\"]*)" contem respectivamente: "([^\"]*)" de id "([^\"]*)" faturando "([^\"]*)" reais, "([^\"]*)" de id "([^\"]*)" faturando "([^\"]*)" reais, "([^\"]*)" de id "([^\"]*)" faturando "([^\"]*)" reais$/,
-      async (key, product_1, id_1, revenue_1, product_2, id_2, revenue_2, product_3, id_3, revenue_3) => {
-        const list = dashboardData[key.toString()];
-        const expectedList = [
-          {
-            product: product_1,
-            id: id_1,
-            revenue: revenue_1,
-          },
-          {
-            product: product_2,
-            id: id_2,
-            revenue: revenue_2,
-          },
-          {
-            product: product_3,
-            id: id_3,
-            revenue: revenue_3,
-          },
-        ];
-        for (let i = 0; i < 3; i++) {
-          const expected = expectedList[i];
-          const current = list[i];
-          const revenue = current['quantity'] * parseFloat(current['value'].toString());
-          expect(current['product'].toString()).to.equal(expected['product'].toString());
-          expect(revenue).to.equal(parseFloat(expected['revenue'].toString()));
-          expect(current['id'].toString()).to.equal(expected['id'].toString());
-        }
-      });
-    
-
 });

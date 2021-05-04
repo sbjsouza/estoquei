@@ -23,5 +23,5 @@ Scenario: Existe mais de três vendas cadastradas na plataforma para mais de tr�
     And existe o produto "Vaso de Centro" cadastrado com id "5" no valor de "20" reais com "1" vendas
     When eu solicito ao servidor o "dashboard"
     Then o sistema retorna o dashboard contendo três itens na lista de "top_sales" e três itens na lista de "top_revenues"
-    And a lista de "top_sales" contem respectivamente: "Cadeira" de id "2" com "4" vendas, "Banquinho" de id "4" com "3" vendas, "Mesa" de id "3" com "2" vendas
-    And a lista de "top_revenues" contem respectivamente: "Mesa" de id "3" faturando "200" reais, "Cadeira" de id "2" faturando "160" reais, "Banquinho" de id "4" faturando "75" reais
+    And a lista de "top_sales" contem respectivamente: "Cadeira" de id "2" com "4" "vendas", "Banquinho" de id "4" com "3" "vendas", "Mesa" de id "3" com "2" "vendas"
+    And a lista de "top_revenues" contem respectivamente: "Mesa" de id "3" com "200" "reais de faturamento", "Cadeira" de id "2" com "160" "reais de faturamento", "Banquinho" de id "4" com "75" "reais de faturamento"
