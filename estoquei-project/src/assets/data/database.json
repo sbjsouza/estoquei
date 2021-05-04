@@ -64,19 +64,19 @@
             "data": "2021-05-05"
         },
         {
-            "product": "Banquinho",
-            "sku": 1111111114,
-            "id": 4,
-            "quantity": 3,
-            "value": "25.0",
-            "data": "2021-05-05"
-        },
-        {
             "product": "Mesa",
             "sku": 1111111113,
             "id": 3,
             "quantity": 2,
             "value": "100.0",
+            "data": "2021-05-05"
+        },
+        {
+            "product": "Banquinho",
+            "sku": 1111111114,
+            "id": 4,
+            "quantity": 3,
+            "value": "25.0",
             "data": "2021-05-05"
         },
         {
@@ -87,5 +87,57 @@
             "value": "20.0",
             "data": "2021-05-05"
         }
-    ]
+    ],
+    "dashboard": {
+        "top_revenues": [{
+                "product": "Mesa",
+                "sku": 1111111113,
+                "id": 3,
+                "quantity": 2,
+                "value": "100.0",
+                "data": "2021-05-05"
+            },
+            {
+                "product": "Cadeira",
+                "sku": 1111111112,
+                "id": 2,
+                "quantity": 4,
+                "value": "40.0",
+                "data": "2021-05-05"
+            },
+            {
+                "product": "Banquinho",
+                "sku": 1111111114,
+                "id": 4,
+                "quantity": 3,
+                "value": "25.0",
+                "data": "2021-05-05"
+            }
+        ],
+        "top_sales": [{
+                "product": "Cadeira",
+                "sku": 1111111112,
+                "id": 2,
+                "quantity": 4,
+                "value": "40.0",
+                "data": "2021-05-05"
+            },
+            {
+                "product": "Banquinho",
+                "sku": 1111111114,
+                "id": 4,
+                "quantity": 3,
+                "value": "25.0",
+                "data": "2021-05-05"
+            },
+            {
+                "product": "Mesa",
+                "sku": 1111111113,
+                "id": 3,
+                "quantity": 2,
+                "value": "100.0",
+                "data": "2021-05-05"
+            }
+        ]
+    }
 }

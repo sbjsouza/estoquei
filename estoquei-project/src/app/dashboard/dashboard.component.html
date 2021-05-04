@@ -1,13 +1,13 @@
 <div class="content" role="main" style="width: 100%">
     <!-- Dashboard -->
-    <h2 id="pagename" style="text-align: left; width: 100%">Dashboard</h2>
+    <h2 id="pagename" style="text-align: left; width: 100%">Dashboard de Produtos</h2>
 
     <!-- Produtos mais vendidos -->
     <div style="width: 100%; display: table">
         <div style="display: table-cell">
             <h2>Produtos mais vendidos</h2>
             <div layout="column">
-                <table id="vendas-table">
+                <table>
                     <tr>
                         <th>ID</th>
                         <th>Produto</th>
@@ -15,11 +15,11 @@
                         <th>Valor</th>
                     </tr>
                     <tbody>
-                        <tr *ngFor="let venda of topSales | async">
-                            <td name="top-sales-id">{{ venda.id }}</td>
-                            <td name="top-sales-product">{{ venda.product }}</td>
-                            <td name="top-sales-quantity">{{ venda.quantity }}</td>
-                            <td name="top-sales-value">{{ venda.value }}</td>
+                        <tr *ngFor="let venda of topSales | async; let i = index">
+                            <td>{{ venda.id }}</td>
+                            <td id="top-sales-product">{{ venda.product }}</td>
+                            <td>{{ venda.quantity }}</td>
+                            <td>{{ venda.value }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -28,11 +28,11 @@
     </div>
 
     <!-- Produtos com maior faturamento(valor x vendas) -->
-    <div style="width: 100%; display: table">
-        <div style="display: table-cell">
-            <h2>Produtos com maior faturamento(valor x vendas)</h2>
-            <div layout="column">
-                <table id="vendas-table">
+    <div style="width: 100%; display: table ">
+        <div style="display: table-cell ">
+            <h2 name="dashboard-table ">Produtos com maior faturamento(valor x vendas)</h2>
+            <div layout="column ">
+                <table>
                     <tr>
                         <th>ID</th>
                         <th>Produto</th>
@@ -41,12 +41,12 @@
                         <th>Faturamento(Quantidade x Valor)</th>
                     </tr>
                     <tbody>
-                        <tr *ngFor="let venda of topRevenues | async">
-                            <td name="top-revenue-id">{{ venda.id }}</td>
-                            <td name="top-revenue-product">{{ venda.product }}</td>
-                            <td name="top-revenue-quantity">{{ venda.quantity }}</td>
-                            <td name="top-revenue-value">{{ venda.value }}</td>
-                            <td name="top-revenue-revenue">{{ venda.quantity * venda.value }}</td>
+                        <tr *ngFor="let venda of topRevenues | async; let i= index">
+                            <td>{{ venda.id }}</td>
+                            <td id="top-revenue-product">{{ venda.product }}</td>
+                            <td>{{ venda.quantity }}</td>
+                            <td>{{ venda.value }}</td>
+                            <td>{{ venda.quantity * venda.value }}</td>
                         </tr>
                     </tbody>
                 </table>
