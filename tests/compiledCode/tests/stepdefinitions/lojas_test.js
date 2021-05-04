@@ -14,12 +14,12 @@ const protractor_1 = require("protractor");
 let chai = require("chai").use(require("chai-as-promised"));
 let expect = chai.expect;
 const request = require("request-promise");
-function getSellerId(id) {
+function getStoreById(id) {
     return __awaiter(this, void 0, void 0, function* () {
         const options = {
             method: `GET`,
             json: true,
-            uri: `http://localhost:3000/sellers/${id}`,
+            uri: `http://localhost:3000/lojas/${id}`,
         };
         try {
             const response = yield request(options);
@@ -31,18 +31,18 @@ function getSellerId(id) {
         }
     });
 }
-function checkSeller(id, name, monthly_sells, monthly_sales_price) {
+function checkStore(id, name, store_profit) {
     return __awaiter(this, void 0, void 0, function* () {
         const options = {
             method: `GET`,
             json: true,
-            uri: `http://localhost:3000/sellers/${id}`,
+            uri: `http://localhost:3000/lojas/${id}`,
         };
         try {
             const response = yield request(options);
-            return Promise.resolve(response.monthly_sells.toString() == monthly_sells.toString() &&
-                response.monthly_sales_price.toString() ==
-                    monthly_sales_price.toString()
+            return Promise.resolve(response.id.toString() == id.toString() &&
+                response.store_profit.toString() ==
+                    store_profit.toString()
                 ? expect(response.name.toString()).to.equal(name)
                 : expect(false).to.equal(true));
         }
@@ -52,44 +52,46 @@ function checkSeller(id, name, monthly_sells, monthly_sales_price) {
         }
     });
 }
-function compareSeller(id, name, monthly_sells, monthly_sales_price, seller) {
+function compareStore(id, name, store_profit, loja) {
     return __awaiter(this, void 0, void 0, function* () {
-        return Promise.resolve(seller.monthly_sells.toString() == monthly_sells.toString() &&
-            seller.monthly_sales_price.toString() == monthly_sales_price.toString()
-            ? expect(seller.name.toString()).to.equal(name)
+        return Promise.resolve(loja.id.toString() == id.toString() &&
+            loja.store_profit.toString() == store_profit.toString()
+            ? expect(loja.name.toString()).to.equal(name)
             : expect(false).to.equal(true));
     });
 }
-var seller;
+var loja;
 cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
     // Given eu estou na página "Lojas"
     Given(/^eu estou na página "([^\"]*)"$/, (pagename) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get("http://localhost:4200/" + pagename.toString().toLowerCase());
         yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
     }));
-    Given(/^o vendedor está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, monthly_sells, monthly_sales_price) => __awaiter(this, void 0, void 0, function* () {
+    ;
+    Given(/^a loja está registrada com o id "([^\"]*)", nome "([^\"]*)" e Lucro "(\d*)"$/, (id, name, store_profit) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get("http://localhost:4200/");
-        yield checkSeller(id.toString(), name.toString(), monthly_sells.toString(), monthly_sales_price.toString());
+        yield checkStore(id.toString(), name.toString(), store_profit.toString());
+    }));
+    Given(/^o vendedor está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, store_profit) => __awaiter(this, void 0, void 0, function* () {
+        yield protractor_1.browser.get("http://localhost:4200/");
+        yield checkStore(id.toString(), name.toString(), store_profit.toString());
     }));
     When(/^eu vou para página "([^\"]*)"$/, (pagename) => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get(`http://localhost:4200/${pagename.toString().toLowerCase()}/`);
         yield expect(protractor_1.element(protractor_1.by.css("#pagename")).getText()).to.eventually.equal(pagename.toString());
     }));
-    When(/^eu pergunto ao sistema pelo vendedor com id "(\d*)"$/, (id) => __awaiter(this, void 0, void 0, function* () {
-        seller = yield getSellerId(id.toString());
+    When(/^eu pergunto ao sistema pela loja com id "(\d*)"$/, (id) => __awaiter(this, void 0, void 0, function* () {
+        loja = yield getStoreById(id.toString());
     }));
-    When(/^eu seleciono "([^\"]*)"$/, (buttonName) => __awaiter(this, void 0, void 0, function* () {
+    When(/^eu seleciono "([^\"]*)"$/, (buttonProfit) => __awaiter(this, void 0, void 0, function* () {
         protractor_1.browser.sleep(2000);
-        yield expect(protractor_1.element(protractor_1.by.buttonText(buttonName.toString())));
+        yield expect(protractor_1.element(protractor_1.by.buttonText(buttonProfit.toString())));
     }));
-    Then(/^o sistema retorna o vendedor que está registrado com o id "(\d*)", nome "([^\"]*)", Número de vendas "(\d*)" e Valor bruto de vendas "([^\"]*)"$/, (id, name, monthly_sells, monthly_sales_price) => __awaiter(this, void 0, void 0, function* () {
-        yield protractor_1.browser.get("http://localhost:4200/");
-        yield compareSeller(id.toString(), name.toString(), monthly_sells.toString(), monthly_sales_price.toString(), seller);
-    }));
-    Then(/^o sistema lista em uma tabela o vendedor com nome "([^\"]*)", o vendedor com nome "([^\"]*)" e o vendedor com nome "([^\"]*)", nesta ordem$/, (seller1, seller2, seller3) => __awaiter(this, void 0, void 0, function* () {
-        let tmp_list = [seller1, seller2, seller3];
+    // Then o sistema lista as lojas com nome "Descontão", "Atacadão", "Varejão" e "Lojão", nesta ordem
+    Then(/^o sistema lista as lojas com nome "([^\"]*)", "([^\"]*)", "([^\"]*)" e "([^\"]*)", nesta ordem$/, (loja1, loja2, loja3, loja4) => __awaiter(this, void 0, void 0, function* () {
+        let tmp_list = [loja1, loja2, loja3, loja4];
         yield protractor_1.element
-            .all(protractor_1.by.css("#sellername"))
+            .all(protractor_1.by.css("#lojaname"))
             .map(function (elm) {
             return elm.getText();
         })
@@ -102,5 +104,9 @@ cucumber_1.defineSupportCode(function ({ Given, When, Then }) {
             });
             expect(validate).to.equal(true);
         });
+    }));
+    Then(/^o sistema retorna a loja que está registrada com o id "(\d*)", nome "([^\"]*)" e Lucro "([^\"]*)"$/, (id, name, store_profit) => __awaiter(this, void 0, void 0, function* () {
+        yield protractor_1.browser.get("http://localhost:4200/");
+        yield compareStore(id.toString(), name.toString(), store_profit.toString(), loja);
     }));
 });

@@ -13,11 +13,14 @@ import { AddProductComponentComponent } from './add-product-component/add-produc
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { AvatarModule } from 'primeng/avatar';
+import {GMapModule} from 'primeng/gmap';
 import { ButtonModule } from 'primeng/button';
 
 import { CalendarModule } from 'primeng/calendar';
 import { ProductListComponent } from './product-list/product-list.component';
 import { TopSellersRankComponent } from './top-sellers-rank/top-sellers-rank.component';
+import { LojasComponent } from './lojas/lojas.component';
+import { StoreFilterComponent } from './store-filter/store-filter.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
@@ -31,6 +34,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AddProductComponentComponent,
     ProductListComponent,
     TopSellersRankComponent,
+    LojasComponent,
+    StoreFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     TableModule,
     AvatarModule,
     CalendarModule,
+    GMapModule,
     ButtonModule,
   ],
   providers: [],
