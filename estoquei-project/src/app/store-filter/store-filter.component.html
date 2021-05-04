@@ -27,7 +27,7 @@
             <td style="color: rgb(0, 133, 151)">{{loja.store_profit | currency:'BRL'}} </td>
             <td style="color: rgb(0, 151, 58)">{{loja.monthly_sells | currency:'BRL'}}</td>
             <td style="color: rgb(161, 33, 1)">{{loja.monthly_expense_cost | currency:'BRL'}}</td>
-            <td><a href={ {loja.store_localization_url}}>Ver Localização</a></td>
+            <td><a href={{loja.store_localization_url}}>Ver Localização</a></td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
