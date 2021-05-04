@@ -11,6 +11,8 @@ let pAND = ((p,q) => p.then(a => q.then(b => a && b)))
 
 let total_value = "";
 
+const homedir = require('os').homedir();
+
 async function getTotal(venda: Vendas) {
   return parseFloat(venda.value)*venda.quantity
 }
@@ -86,7 +88,9 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     Then(/^o sistema baixa o arquivo "([^\"]*)"$/, async (file_name) => {
         
-        await fs.existsSync(<string>file_name);
+          await browser.wait(async function () {
+            return await fs.existsSync(homedir+'/Downloads/'+<string>file_name);
+          }, 30*1000, "Arquivo não foi baixado em 30 segundos")
     });
 
     Then(/^o sistema retorna o total de "([^\"]*)"$/, async (value) => {
